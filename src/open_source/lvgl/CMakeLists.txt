@@ -12,7 +12,6 @@ file(GLOB_RECURSE SOURCES ${CMAKE_LVGL_SOURCE_DIR}/src/*.c)
 set(PUBLIC_HEADER
     ${CMAKE_LVGL_SOURCE_DIR}
     ${CMAKE_LVGL_SOURCE_DIR}/src
-  
 )
 
 set(PRIVATE_HEADER
@@ -37,7 +36,5 @@ set(WHOLE_LINK
 set(MAIN_COMPONENT
     false
 )
-
-set(LIB_OUT_PATH ${BIN_DIR}/${CHIP}/libs/wifi/${TARGET_COMMAND})
 
 build_component()
