@@ -1,15 +1,15 @@
-# HH-D111星闪开发板规格说明书_V
+# HH-D111星闪开发板规格说明书
 
 ![](./media/HH-D111_NearLink_DevBoard.png)
 
-HH-D111是基于HH-M111星闪模组的开发板形态，采用海思星闪WS63E 的解决方案，支持BLE5.4&SLE1.0，支持1M/2M/4M带宽，物理层最大支持 12 Mbps 速率，集成高性能 32bit RISC-V 微处理器（MCU），内置大容量 SRAM 和 Flash，支持硬件安全引擎，支持UART、ADC、SPI、I2C、DMA、USB2.0、NFC、Timer等丰富外设接口。支持LiteOS操作系统，可广泛适应于 PC 配件，IOT 等物联网智能终端领域。
+HH-D111 是基于 HH-M11 星闪模组的开发板形态，采用上海海思星闪 WS63E 的解决方案，支持BLE5.2&SLE1.0，支持1M/2M/4M带宽，物理层最大支持 12 Mbps 速率，集成高性能 32bit RISC-V 微处理器（MCU），内置大容量 SRAM 和 Flash，支持硬件安全引擎，支持 UART、ADC、SPI、I2C、DMA 等丰富外设接口。支持 Lite OS 操作系统，可广泛适应于 PC 配件，IoT 等物联网智能终端领域。
 
 ## 主要规格
 
 | **模块**     | **规格描述**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | **处理器**   | 高性能 RISC-V 32bit MCU<br />工作频率最高可达 240MHz<br />内置 606KB SRAM、300KB ROM<br />内置 4MB Flash<br />支持 AES/SM4 对称算法加解密<br />支持 SHA1/SHA2/SM3 散列算法<br />支持 PBKDF2 密钥派生算法<br />支持多种非对称公钥算法<br />支持随机数生成 |
-| **外围接口** | 支持 2*I2C，支持 master 和 slave 模式<br />支持 1 路 2  通道 I2S/PCM<br />支持 1*SPI，支持 master 和 slave 模式可配<br />支持 3*UART，最大速率4Mbit/s；其中 2 个 4 线 UART支持流控 <br />支持 8*PWM<br />支持 6 路  13bit ADC，最大采样率 1.6M<br />支持 19*GPIO（全引脚复用）<br />支持Tsensor，-40 ℃～ +125 ℃温度检测范围，10bit SARADC 量化温度，分辨率 0.208℃ /LSB |
+| **外围接口** | 支持 2*I2C，支持 master 和 slave 模式<br />支持 1 路 2  通道 I2S/PCM<br />支持 1 * SPI，支持 master 和 slave 模式可配<br />支持 3 * UART，最大速率4Mbit/s；其中 2 个 4 线 UART支持流控 <br />支持 8 * PWM<br />支持 6 路  13bit ADC，最大采样率 1.6M<br />支持 19 * GPIO（全引脚复用）<br />支持Tsensor，-40 ℃～ +125 ℃温度检测范围，10bit SARADC 量化温度，分辨率 0.208℃ /LSB |
 | **Wi-Fi**    | 1×1 2.4GHz 频段（ ch1～ch14）<br />PHY 支持 IEEE  802.11b/g/n/ax   MAC支持 IEEE  802.11d/e/i/k/v/r/w<br />支持 802.11 20MHz/40MHz 频宽，支持  802.11ax 20MHz 频宽<br />支持最大速率：150Mbit/s@HT40 MCS7 MCS7，114.7Mbit/s@HE20  MCS9<br />内置 PA 和 LNA，集成 TX/RX Switch 、Balun 等<br />支持 STA 和 SoftAP 形态，作为 SoftAP 时最大支持 6个 STA 接入<br />支持 A-MPDU 、A-MSDU<br />支持 Block-ACK<br />支持 QoS ，满足不同业务服务质量需求<br />支持 WPA/WPA2/WPA3 personal 、WPS2.0  、WAPI<br />支持 RF 自校准方案<br />支持 STBC 和 LDPC<br />支持雷达感知功能 |
 | **BLE**      | 低功耗蓝牙 Bluetooth Low Energy（BLE）<br />支持 BLE4.0/4.1/4.2/5.0/5.1/5.2<br />支持数据速率 ：1Mbps，2Mbps，500kbps 和 125kbps |
 | **SLE**      | 星闪低功耗接入技术 Sparklink Low Energy（SLE）<br />星闪SLE1.0<br />支持SLE 1MHz/2MHz/4MHz<br />最大空口速率12Mbps<br />支持Polar信道编码<br />支持 SLE 网关。 |
