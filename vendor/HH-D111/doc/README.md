@@ -2,7 +2,7 @@
 
 ![](./media/HH-D111_NearLink_DevBoard.png)
 
-HH-D111 是基于 HH-M11 星闪模组的开发板形态，采用上海海思星闪 WS63E 的解决方案，支持BLE5.2&SLE1.0，支持1M/2M/4M带宽，物理层最大支持 12 Mbps 速率，集成高性能 32bit RISC-V 微处理器（MCU），内置大容量 SRAM 和 Flash，支持硬件安全引擎，支持 UART、ADC、SPI、I2C、DMA 等丰富外设接口。支持 Lite OS 操作系统，可广泛适应于 PC 配件，IoT 等物联网智能终端领域。
+HH-D111 是基于 HH-M111 星闪模组的开发板形态，采用上海海思星闪 WS63E 的解决方案，支持BLE5.2&SLE1.0，支持1M/2M/4M带宽，物理层最大支持 12 Mbps 速率，集成高性能 32bit RISC-V 微处理器（MCU），内置大容量 SRAM 和 Flash，支持硬件安全引擎，支持 UART、ADC、SPI、I2C、DMA 等丰富外设接口。支持 Lite OS 操作系统，可广泛适应于 PC 配件，IoT 等物联网智能终端领域。
 
 ## 主要规格
 
