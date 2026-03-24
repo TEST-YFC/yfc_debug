@@ -39,6 +39,7 @@
 | [模组：WS63E星闪模组](https://e.tb.cn/h.6p0TonQdm3whw0i?tk=ZjcNVTAUwUG) | 润和软件的星闪模组，基于WS63E的解决方案，支持雷达人体活动感知 |                                                              |
 | [模组：MYF-F63星闪模组链接 ](https://shop187806465.taobao.com/?spm=pc_detail.29232929.shop_block.dshopinfo.2fd27dd6T64Lbi) |             明裕丰的星闪模组、开发板，采用WS63解决方案             |                                                              |
 | [模组：KHM-3863A 星闪模组购买链接](https://mall.kaihong.com/productDetail?skuId=1839224386385612801&goodsId=1839224386133954561) | 深开鸿的星闪模组，采用WS63解决方案，支持星闪、WiFi、蓝牙三模SoC通信，支持AT指令及OpenCPU二次开发，支持KaihongOS Lite版本及星闪链路软总线特性等 |                                                              |
+| [模组：利尔达FB36 星闪模组购买链接](https://item.taobao.com/item.htm?ft=t&id=1028608779508) |利尔达的星闪模组，基于WS63解决方案，包含[模组封装](https://alidocs.dingtalk.com/i/nodes/b9Y4gmKWrPGK6GavsmL76QQMJGXn6lpz?utm_scene=team_space)，[FB36系列硬件设计指南](https://alidocs.dingtalk.com/i/nodes/X6GRezwJlAGw6G2afX0AR2q48dqbropQ?utm_scene=team_space)||
 
 **免费样片申请活动：[活动链接](https://developers.hisilicon.com/active?activity_id=4112f69ad3c0430fb1d488da2616aa7f&channelCode=hispark)**
 
@@ -57,7 +58,7 @@
 | MYF-F63VA01开发板（明裕丰）                                  | [MYF-F63VA01星闪开发板 （淘宝）](https://item.taobao.com/item.htm?id=893223665987&pisk=gY0KqOj-Xdvh363LsX-GqErLqXAGvhce6vlfr82hVAHtKRbkTyxzyYetUJq3RXYSIvcXTJxyYYHtNjdP-prkybGqpJqoyb78NbMyT8AejXlUzz9Dn8LmTXPGt7LZJMw1CfPbOgtgAPu1ecJDnEYDA1aJpKDkpMF95SFbPWZ7NfOTN7N7PuwI1CF7Z9s5RYO967N4N7N5RlT_gWa5FMwQflN7igsCAa6667y_FzaSFPOTav899R5Q9an2l8zEWdHdPagT9ltiORMSUQVUvGc3Ca9jWWe4hXwOPawYpc8o6Xvduf4E1xFmKF_KHjuZB5MXydUrQ0M7wATVEyomLqrt_n_s9yeacSg6NZwoJccbBrCWRfULpog3DEdxhfhSml3MGEzLRJiu8bfvKf3KKXutZ_s_JymTD2UXu9wojj38w4JyWxhq7AFshUpC4b0mkmrVn-FlACdO4grQ_Ib8HaXdiABQ6-AQAgSzq5PTnCINVg6WE5eDsGjP4lDd.&spm=tbpc.mytb_followshop.item.goods) | ![](vendor/MYF_F63/doc/media/MYF-F63VA01开发板.png)          |
 | MYF-F63AI01开发板（明裕丰）                                  | [MYF-F63AI01星闪AI语音开发板（淘宝）](https://item.taobao.com/item.htm?id=922405424292&pisk=g4nmjMYvfqzfWqd8y0ZX8yE11r8RGoZ_sfIT6lFwz7P5DfEYXuWzL-PN75yN44DIsSp6lo3usblugfD6hRPZ_fVtkUKKhxZ_bBIMvHHjYF3Wfj2Nb8JaIJW2erusFujzbBdpvaBzlIEZ6N5BuT7zd7y4QP72EzyTIlW4QfPzzJydgllZ_8rzBJ5VbiyaauP7nRya_lSzUR2UQtzZ_YJuQ7PabrlZUvdvuSiZ40R8VjPaz8yZq-40TYYCbGqfvrPUh7SwT0e0OWk4ZGSat5OoMYDviMM8cYl3pjKPmXDIVb2rThAufbgZ_RcyA1EjJjiQrYTF4xq0NyyE4dSU6m0-L7qhQnkumS4EDyxHKXkoQ2Uo2p-QmoPqWoMOKIHomjHjqABNzoqxrym0YH1464HnjRm613cnd0GuUX-MgguAzw56TGwyB0715ry7EWU4j2Svt67QLLvl8da4F-NpELb6Mry7ENvkEwqbu8wc5&spm=a21xtw.29178619.0.0) | ![](vendor/MYF_F63/doc/media/MYF-F63AI01开发板.png)          |
 | [KHD-3863B 星闪开发板（深开鸿）](https://mall.kaihong.com/productDetail?skuId=1839195267891466241&goodsId=1839195267383955458) | [KHD-3863B星闪开发板（开鸿商城）](https://mall.kaihong.com/productDetail?skuId=1839195267891466241&goodsId=1839195267383955458) | <img src="vendor/Kaihong_KHD-3863B/doc/media/KHD-3863B.png" alt="KHD-3863B" style="zoom: 75%;" /> |
-| FB36星闪开发板（利尔达）                                     | [利尔达FB36星闪开发板（淘宝）](https://e.tb.cn/h.hkidLj95hZzH1cz?tk=yzWe4W7VT4X) | ![image-20250801141835783](./vendor/Lierda-FB36/image-20250801141835783.png) |
+| FB36星闪开发板（利尔达）                                     | [利尔达FB36星闪开发板（淘宝）](https://item.taobao.com/item.htm?ft=t&id=1028608779508) | ![image-20250801141835783](./vendor/Lierda-FB36/image-20250801141835783.png) |
 | FB36星闪Wi-Fi6 AI开发板（利尔达）                            | [利尔达FB36星闪Wi-Fi6 AI开发板（淘宝）](https://e.tb.cn/h.hkUwR5OhAz12Ija?tk=latG4WfuOeAtG-#22>lD) | ![image-20250801142242182](./vendor/Lierda-FB36/image-20250801142237377.png) |
 
 开发板产品均由相应厂家自行销售，由其对产品质量负责，如侵犯他人知识产权的由其自行承担全部责任及赔偿。海思不提供任何保证及担保，亦不承担责任及赔偿。
@@ -75,6 +76,7 @@
 |          DTU_Car(大连理工大学)          | [智能小车星闪案例开发指南](vendor/DUT_Car/doc/dut_car实验指导手册.md) |    [DTU_Car开发板硬件原理图](vendor/DUT_Car/doc/hardware)    |
 |        MYF-F63VA01开发板(明裕丰)        |         [MYF-F63VA01开发板指南](vendor/MYF_F63/doc)          |  [MYF-F63VA01开发板硬件原理图](vendor/MYF_F63/doc/hardware)  |
 |        KHD-3863B星闪开发板(深开鸿)        |         [KHD-3863B星闪开发板介绍](vendor/Kaihong_KHD-3863B/doc/README.md)          |  [KHD-3863B星闪开发板硬件原理图](vendor/Kaihong_KHD-3863B/doc/hardware/开鸿KHD-3863B星闪开发板.pdf)  |
+| FB36星闪开发板（利尔达） | [FB36星闪开发板介绍](https://alidocs.dingtalk.com/i/nodes/dxXB52LJqnGE6GN4cqenAP2M8qjMp697?utm_scene=team_space) | [FB36星闪开发板硬件原理图](https://alidocs.dingtalk.com/i/nodes/LeBq413JAwPRQPYLuyKB3DDZWDOnGvpb?utm_scene=team_space) |
 
 ## 开发板示例
 
