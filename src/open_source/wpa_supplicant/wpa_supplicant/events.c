@@ -2080,7 +2080,9 @@ int wpa_supplicant_connect(struct wpa_supplicant *wpa_s,
 	if (wpas_wps_scan_pbc_overlap(wpa_s, selected, ssid)) {
 		wpa_msg(wpa_s, MSG_INFO, WPS_EVENT_OVERLAP
 			"PBC session overlap");
+#ifdef CONFIG_WPS
 		wpas_notify_wps_event_pbc_overlap(wpa_s);
+#endif
 #ifdef CONFIG_P2P
 		if (wpa_s->p2p_group_interface == P2P_GROUP_INTERFACE_CLIENT ||
 		    wpa_s->p2p_in_provisioning) {
@@ -4071,7 +4073,6 @@ static void wpa_supplicant_event_assoc(struct wpa_supplicant *wpa_s,
 	}
 #endif /* CONFIG_TESTING_OPTIONS */
 #endif /* CONFIG_IEEE80211R */
-#ifndef EXT_CODE_CROP
 
 	if (wpa_s->pending_eapol_rx) {
 		struct os_reltime now, age;
@@ -4091,7 +4092,7 @@ static void wpa_supplicant_event_assoc(struct wpa_supplicant *wpa_s,
 		wpabuf_free(wpa_s->pending_eapol_rx);
 		wpa_s->pending_eapol_rx = NULL;
 	}
-#endif /* EXT_CODE_CROP */
+
 #ifdef CONFIG_WEP
 #ifndef EXT_CODE_CROP
 	if ((wpa_s->key_mgmt == WPA_KEY_MGMT_NONE ||
@@ -5770,7 +5771,7 @@ void wpa_supplicant_event(void *ctx, enum wpa_event_type event,
 	if (wifi_dev == NULL)
 		return;
 
-	if (wifi_dev->iftype == EXT_WIFI_IFTYPE_AP || wifi_dev->iftype == EXT_WIFI_IFTYPE_P2P_GO) {
+	if (wifi_dev->iftype == EXT_WIFI_IFTYPE_AP) {
 		hostapd_event(g_hapd, event, data);
 		return;
 	}

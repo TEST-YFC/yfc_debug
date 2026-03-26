@@ -214,6 +214,8 @@ sign_app(os.path.join(out_put, "ws63-liteos-testsuite/ws63-liteos-testsuite.bin"
 
 sign_app(os.path.join(out_put, "ws63-liteos-app/ws63-liteos-app.bin"), "0", "liteos_app_bin_ecc.cfg")
 
+sign_app(os.path.join(out_put, "ws63-liteos-matter/ws63-liteos-app.bin"), "0", "liteos_matter_bin_ecc.cfg")
+
 sign_app(os.path.join(out_put, "ws63-liteos-spi-host/ws63-liteos-spi-host.bin"), "0", "liteos_spi_host_bin_ecc.cfg")
 
 sign_app(os.path.join(out_put, "ws63-liteos-spi-device/ws63-liteos-spi-device.bin"), "0", "liteos_spi_device_bin_ecc.cfg")
@@ -260,7 +262,17 @@ sign_app(os.path.join(out_put, "ws63-liteos-bgle-all/ws63-liteos-bgle-all.bin"),
 
 sign_app(os.path.join(out_put, "ws63-liteos-bgle-all-asic/ws63-liteos-bgle-all-asic.bin"), "0", "liteos_bgle_all_asic_bin_ecc.cfg")
 
-sign_app(os.path.join(out_put, "ws63-liteos-testsuite-radar/ws63-liteos-testsuite-radar.bin"), "0", "liteos_testsuite_radar_bin_ecc.cfg")
+sign_app(os.path.join(out_put, "ws63-liteos-app-mesh/ws63-liteos-app-mesh.bin"), "0", "liteos_app_mesh_bin_ecc.cfg")
+
+sign_app(os.path.join(out_put, "ws63-liteos-mesh-sample-prov/ws63-liteos-mesh-sample-prov.bin"), "0", "ws63_liteos_mesh_sample_prov_bin_ecc.cfg")
+
+sign_app(os.path.join(out_put, "ws63-liteos-mesh-sample-server/ws63-liteos-mesh-sample-server.bin"), "0", "ws63_liteos_mesh_sample_server_bin_ecc.cfg")
+
+sign_app(os.path.join(out_put, "ws63-liteos-mesh-sample-client/ws63-liteos-mesh-sample-client.bin"), "0", "ws63_liteos_mesh_sample_client_bin_ecc.cfg")
+
+sign_app(os.path.join(out_put, "ws63-liteos-slp-radar/ws63-liteos-slp-radar.bin"), "0", "liteos_slp_radar_bin_ecc.cfg")
+
+sign_app(os.path.join(out_put, "ws63-liteos-slp-radar-perf/ws63-liteos-slp-radar-perf.bin"), "0", "liteos_slp_radar_perf_bin_ecc.cfg")
 
 sign_app(os.path.join(boot_bin, "ws63-liteos-mfg.bin"), "0", "liteos_mfg_bin_factory_ecc.cfg")
 

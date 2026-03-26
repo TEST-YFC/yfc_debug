@@ -22,7 +22,15 @@ extern "C" {
 #define RAMX_SW_CONFLICT_BASE_ADDR 0x44006C14
 #define RAM_SW_CONFLICT_CLR 0x44006C0C
 
+enum {
+    EM_SIZE_0K = 0,
+    EM_SIZE_16K = 16,
+    EM_SIZE_32K = 32,
+    EM_SIZE_64K = 64,
+};
+
 void dyn_mem_cfg(void);
+uint8_t dyn_get_em_mem_cfg(void);
 
 #ifdef __cplusplus
 #if __cplusplus

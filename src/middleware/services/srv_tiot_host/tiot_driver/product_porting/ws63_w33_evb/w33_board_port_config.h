@@ -23,7 +23,11 @@ extern "C" {
 #define PIN_PULL_DOWN    PIN_PULL_TYPE_DOWN
 #define PIN_PULL_NONE    PIN_PULL_TYPE_DISABLE
 
-static w33_board_hw_info g_w33_board_hw_info = { UART_BUS_1, { GPIO_03, PIN_NONE, GPIO_04 } };
+#ifndef CONFIG_TIOT_WS63_UART_BUS
+#define CONFIG_TIOT_WS63_UART_BUS   1
+#endif
+
+static w33_board_hw_info g_w33_board_hw_info = { CONFIG_TIOT_WS63_UART_BUS, { GPIO_03, PIN_NONE, GPIO_04 } };
 static w33_board_info g_w33_board_info = {
     .cfg_path = NULL,
     .hw_infos = &g_w33_board_hw_info

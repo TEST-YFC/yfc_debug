@@ -510,6 +510,12 @@ extern UINT32 LOS_MemPoolSizeGet(const VOID *pool);
  */
 extern UINT32 LOS_MemTotalUsedGet(VOID *pool);
 
+#ifdef LOSCFG_COMPAT_RT_THREAD
+#ifdef LOSCFG_MEM_TASK_STAT
+extern UINT32 LOS_MemTotalPeakUsedGet(VOID *pool);
+#endif
+#endif
+
 /**
  * @ingroup los_memory
  * @brief Get the number of free memory nodes.

@@ -8,6 +8,10 @@ choice
 config SAMPLE_SUPPORT_STA_SAMPLE
     bool "Support WIFI STA Sample"
 
+if SAMPLE_SUPPORT_STA_SAMPLE
+osource "application/samples/wifi/sta_sample/Kconfig"
+endif
+
 config SAMPLE_SUPPORT_ALILINK_SAMPLE
     bool "Support ALILINK Sample"
 

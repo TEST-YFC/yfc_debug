@@ -34,3 +34,7 @@ endif()
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/srv_tiot_host/CMakeLists.txt)
     add_subdirectory(srv_tiot_host)
 endif()
+
+if("CONFIG_SUPPORT_MATTER" IN_LIST DEFINES)
+add_subdirectory_if_exist(matter)
+endif()

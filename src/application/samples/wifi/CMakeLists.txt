@@ -34,4 +34,9 @@ if(DEFINED CONFIG_SUPPORT_UAPI)
     add_subdirectory_if_exist(uhapi)
 endif()
 
+if(DEFINED CONFIG_SAMPLE_SUPPORT_MQTT)
+    add_subdirectory_if_exist(mqtt_sample)
+    set(PUBLIC_HEADER "${PUBLIC_HEADER}" "${CMAKE_CURRENT_SOURCE_DIR}/mqtt_sample/" PARENT_SCOPE)
+endif()
+
 set(SOURCES "${SOURCES}" PARENT_SCOPE)

@@ -4,7 +4,7 @@
 #===============================================================================
 MESSAGE(STATUS "project_name:" ${project_name})
 if(CHIP STREQUAL "ws63")
-    include (${CMAKE_CURRENT_SOURCE_DIR}/build/SP31C/slp_radar_client.cmake)
+    include (${CMAKE_CURRENT_SOURCE_DIR}/build/SP3x/slp_radar_client.cmake)
     return()
 elseif("${board}" MATCHES "HI115")
     include (${CMAKE_CURRENT_SOURCE_DIR}/build/115x/115x_radar_service.cmake)

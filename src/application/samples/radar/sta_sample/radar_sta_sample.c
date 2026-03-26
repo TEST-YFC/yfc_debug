@@ -49,26 +49,6 @@
 
 #define RADAR_DBG_INFO_RPT_COEF 1
 #define RADAR_DBG_INFO_LEN 16
-#define CHN_SWITCH_NUM 3
-#define CHN_SWITCH_ARR \
-    {                  \
-        1, 5, 12       \
-    }
-#define ABN_FRAME_INT_TH      600
-#define ABN_FRAME_INT_AVG_TH  550
-#define ABN_FRAME_RATIO       2
-#define CHAN_PARA_LEN         4
-
-// 微波模式识别默认参数定义
-#define GRAD_AMP_DROP_STA_THRES 400
-#define GRAD_AMP_MWO_STA_THRES  350
-#define GRAD_AMP_DROP_AP_THRES  500
-#define GRAD_AMP_MWO_AP_THRES   450
-#define GRAD_SLIDE_WIN_LEN      32
-#define GRAD_SLIDE_WIN_THRES    6
-#define MWO_TIME_THRES          1 // 单位:min
-#define MWO_RNG_THRES_COEF      12 // 扩大10倍存储
-#define MWO_MODE_PARAM_LEN      8
 
 // led档位控制参数
 typedef enum {
@@ -78,19 +58,6 @@ typedef enum {
 } radar_led_gear_t;
 
 radar_led_gear_t g_radar_led_gear = RADAR_INSIDE_1M;
-static uint8_t g_radar_chn[CHN_SWITCH_NUM] = CHN_SWITCH_ARR;
-static uint8_t g_radar_chn_idx = 0;
-
-static void chan_switch(void)
-{
-    // 切换信道
-    PRINT("[RADAR_SAMPLE] change chn to [%u], %u\r\n", g_radar_chn[g_radar_chn_idx], g_radar_chn_idx);
-    wifi_set_channel(IFTYPE_STA, (int32_t)g_radar_chn[g_radar_chn_idx]);
-    g_radar_chn_idx++;
-    if (g_radar_chn_idx % CHN_SWITCH_NUM == 0) {
-        g_radar_chn_idx = 0;
-    }
-}
 
 /*****************************************************************************
   STA 扫描-关联 sample用例
@@ -219,6 +186,7 @@ static void radar_print_dbg_info(int16_t *arr, uint8_t len)
 
 static void radar_init_para(void)
 {
+    // 维测模式设置
     radar_dbg_para_t dbg_para;
     dbg_para.times = RADAR_DEFAULT_TIMES;
     dbg_para.loop = RADAR_DEFAULT_LOOP;
@@ -227,41 +195,27 @@ static void radar_init_para(void)
     dbg_para.dbg_type = RADAR_DEFAULT_DBG_TYPE;
     dbg_para.period = RADAR_DEFAULT_PERIOD;
     uapi_radar_set_debug_para(&dbg_para);
-
+    // 无人档位退出时延设置
     int16_t dly_time = RADAR_QUIT_DELAY_TIME;
     uapi_radar_set_delay_time(dly_time);
-
-    radar_sel_para_t sel_para;
-    sel_para.height = RADAR_HEIGHT_2M;
-    sel_para.scenario = RADAR_SCENARIO_TYPE_HOME;
-    sel_para.material = RADAR_MATERIAL_SINGLE;
-    sel_para.fusion_track = true;
-    sel_para.fusion_ai = true;
-    uapi_radar_select_alg_para(&sel_para);
-
-    // 算法门限
+    // 算法门限设置
     radar_alg_para_t alg_para;
-    alg_para.d_th_1m = 20;
-    alg_para.d_th_2m = 22;
-    alg_para.p_th = 25;
-    alg_para.t_th_1m = 13;
-    alg_para.t_th_2m = 26;
+    alg_para.d_th_1m = 32;
+    alg_para.d_th_2m = 25;
+    alg_para.p_th = 30;
+    alg_para.t_th_1m = 20;
+    alg_para.t_th_2m = 35;
     alg_para.b_th_ratio = 10;
     alg_para.b_th_cnt = 4;
     alg_para.a_th = 70;
-    alg_para.pt_cld_para_1 = 2;
-    alg_para.pt_cld_para_2 = 2;
-    alg_para.pt_cld_para_3 = 2;
-    alg_para.pt_cld_para_4 = 2;
-    alg_para.rd_pwr_para_1 = 2;
-    alg_para.rd_pwr_para_2 = 2;
-    alg_para.rd_pwr_para_3 = 2;
+    alg_para.pt_cld_para_1 = 7;
+    alg_para.pt_cld_para_2 = 7;
+    alg_para.pt_cld_para_3 = 7;
+    alg_para.pt_cld_para_4 = 10;
+    alg_para.rd_pwr_para_1 = 6;
+    alg_para.rd_pwr_para_2 = 6;
+    alg_para.rd_pwr_para_3 = 10;
     uapi_radar_set_alg_para(&alg_para, 0);
-    // 微波模式识别
-    uint16_t arr[MWO_MODE_PARAM_LEN] = { GRAD_AMP_DROP_STA_THRES, GRAD_AMP_MWO_STA_THRES, GRAD_AMP_DROP_AP_THRES,
-        GRAD_AMP_MWO_AP_THRES, GRAD_SLIDE_WIN_LEN, GRAD_SLIDE_WIN_THRES, MWO_TIME_THRES, MWO_RNG_THRES_COEF
-    };
-    uapi_radar_set_mwo_mode_para(arr, MWO_MODE_PARAM_LEN, 1);
 }
 
 int radar_demo_init(void *param)
@@ -270,11 +224,9 @@ int radar_demo_init(void *param)
     param = param;
     radar_led_init();
     radar_start_sta();
-    uapi_radar_register_result_cb(radar_print_res);
-    uapi_radar_register_current_frame_result_cb(radar_print_cur_frame_res);
-    uapi_radar_register_debug_info_cb(radar_print_dbg_info, RADAR_DBG_INFO_RPT_COEF);
-    uint16_t arr_chan_switch[CHAN_PARA_LEN] = {1, ABN_FRAME_INT_TH, ABN_FRAME_INT_AVG_TH, ABN_FRAME_RATIO};
-    uapi_radar_register_channel_switch_cb(chan_switch, arr_chan_switch, CHAN_PARA_LEN);
+    uapi_radar_register_result_cb(radar_print_res); // 注册雷达档位结果回调函数
+    uapi_radar_register_current_frame_result_cb(radar_print_cur_frame_res); // 注册雷达单帧结果回调函数
+    uapi_radar_register_debug_info_cb(radar_print_dbg_info, RADAR_DBG_INFO_RPT_COEF);  // 注册雷达维测数据回调函数
 
     // 启动雷达
     (void)osDelay(WIFI_START_STA_DELAY);
@@ -284,17 +236,16 @@ int radar_demo_init(void *param)
     for (;;) {
         (void)osDelay(RADAR_STATUS_QUERY_DELAY);
         uint8_t sts;
-        uapi_radar_get_status(&sts);
-        uapi_radar_get_hardware_status(&sts);
+        uapi_radar_get_status(&sts); // 打印查询到的雷达工作状态
         uint16_t time;
-        uapi_radar_get_delay_time(&time);
+        uapi_radar_get_delay_time(&time); // 打印查询到的无人档位退出时延
         uint16_t iso;
-        uapi_radar_get_isolation(&iso);
+        uapi_radar_get_isolation(&iso); // 打印查询到的隔离度值
         radar_result_t res = {0};
-        uapi_radar_get_result(&res);
+        uapi_radar_get_result(&res); // 打印查询到的结果档位上报结果
         int16_t arr[RADAR_DBG_INFO_LEN] = {0};
         uapi_radar_get_debug_info(arr, RADAR_DBG_INFO_LEN);
-        radar_print_dbg_info(arr, RADAR_DBG_INFO_LEN);
+        radar_print_dbg_info(arr, RADAR_DBG_INFO_LEN); // 获取维测数据并打印
     }
 
     return 0;

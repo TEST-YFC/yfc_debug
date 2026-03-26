@@ -242,6 +242,15 @@ typedef enum {
     HMAC_PKTS_CNT_TYPE_BUTT
 } dft_hmac_vap_stat_enum;
 
+typedef enum {
+    RX_ICMP_HMAC_START = 0,
+    RX_ICMP_HMAC_END,
+    TX_ICMP_HMAC_START,
+    TX_ICMP_HMAC_END,
+    ICMP_TRX_TYPE_BUTT
+} icmp_trx_type_enum;
+typedef osal_u8 icmp_trx_type_enum_u8;
+
 /*****************************************************************************
   4 全局变量声明
 *****************************************************************************/
@@ -266,6 +275,15 @@ typedef struct {
     osal_u32 tx_from_dmac_mpdu_cnt;          /* DMAC挂硬件队列发送mpdu报文个数 */
     osal_u32 tx_complete_mpdu_cnt;           /* 硬件上报发送完成中断mpdu数量 */
 } dft_hw_statis_cnt_stru;
+
+struct mac_icmp_header {
+    uint8_t  icmp_type;  // ICMP类型
+    uint8_t  icmp_code;  // ICMP代码
+    uint16_t icmp_sum;   // 校验和
+    uint16_t icmp_id;    // 标识符
+    uint16_t icmp_seq;   // 序列号
+};
+typedef struct mac_icmp_header mac_icmp_header_stru;
 
 /*****************************************************************************
   8 UNION定义

@@ -1,11 +1,3 @@
- /**
- * Copyright (c) HiSilicon (Shanghai) Technologies Co., Ltd. 2024-2025. All rights reserved.
- *
- * Description: Records the address mapping table of the function adapted to the app.bin file. \n
- *
- * History: \n
- * 2024-01-27, Create file. \n
- */
 
 #include "app_function_mapping.h"
 #include "func_call.h"

@@ -1,11 +1,3 @@
-/**
- * Copyright (c) HiSilicon (Shanghai) Technologies Co., Ltd. 2024-2025. All rights reserved.
- *
- * Description: hilink function mapping. \n
- *
- * History: \n
- * 2024-01-27, Create file. \n
- */
 
 #include "hilink_function_mapping.h"
 #include "func_call.h"

@@ -41,6 +41,10 @@ extern void splz_thread_handle(void *para);
 void at_uart_init(void);
 #endif
 
+#ifdef CONFIG_SUPPORT_MATTER
+extern void MatterAppEntry(void);
+#endif
+
 #ifdef __cplusplus
 #if __cplusplus
 }

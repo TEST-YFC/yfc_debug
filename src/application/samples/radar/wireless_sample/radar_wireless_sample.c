@@ -373,6 +373,7 @@ static void radar_uart_port_init(void)
 
     (void)uapi_uart_set_attr(LOG_UART_BUS, &uart_line_config);
 }
+#ifdef RADAR_CTRL_MACHINE
 #ifdef RADAR_ONE_GEAR_CTRL
 static void radar_send_open_msg(void)
 {
@@ -513,12 +514,14 @@ static void radar_ctrl_proc(radar_result_t *res)
     }
 }
 #endif
+#endif
 
 static void radar_print_res(radar_result_t *res)
 {
     PRINT("[RADAR_SAMPLE] lb:%u, hb:%u, hm:%u\r\n", res->lower_boundary, res->upper_boundary, res->is_human_presence);
-
+#ifdef RADAR_CTRL_MACHINE
     radar_ctrl_proc(res);
+#endif
 }
 
 static void radar_socket_init(void)

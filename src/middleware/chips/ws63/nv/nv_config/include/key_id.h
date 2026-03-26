@@ -24,6 +24,20 @@
 #define NV_ID_BTH_HIDINFO                  0x00C3
 #define NV_ID_BTH_RESERVED                 0x00C4
 
+#define NV_ID_BTH_BLE_MESH_RPL             0x00D0 /* ble mesh replay list */
+#define NV_ID_BTH_BLE_MESH_NET_KEY         0x00D1 /* ble mesh net key */
+#define NV_ID_BTH_BLE_MESH_APP_KEY         0x00D2 /* ble mesh app key */
+#define NV_ID_BTH_BLE_MESH_NET_ADDR        0x00D3 /* ble mesh net addr */
+#define NV_ID_BTH_BLE_MESH_IV              0x00D4 /* ble mesh iv */
+#define NV_ID_BTH_BLE_MESH_SEQ             0x00D5 /* ble mesh sequence */
+#define NV_ID_BTH_BLE_MESH_HB_PUB          0x00D6 /* ble mesh heart beat */
+#define NV_ID_BTH_BLE_MESH_CFG             0x00D7 /* ble mesh cfg */
+#define NV_ID_BTH_BLE_MESH_VA              0x00D8 /* ble mesh virtual addr */
+#define NV_ID_BTH_BLE_MESH_OTA_FLAG        0x00D9 /* ble mesh upg flag */
+#define NV_ID_BTH_BLE_MESH_MOD             0x00E0 /* ble mesh model nv */
+#define NV_ID_BTH_BLE_MESH_TUPLE           0x00E1 /* ble mesh tuple nv */
+#define NV_ID_COMPOSITION_DATA_PAGE_128    0x00E2 /* NV nppi composition data page 128 id */
+
 /* user factory key_id [0x1000,0x2000) */
 #define NV_ID_USER_FACTORY_AREA_START      0x1000 /* Not a real key_id , just used for region determination. */
 
@@ -137,6 +151,9 @@
 
 /* user normal key_id [0x5000,0xFFFF) */
 #define NV_ID_USER_NORMAL_AREA_START      0x5000 /* Not a real key_id , just used for region determination. */
+
+/* Matter key_id [0x6000,0x7000) */
+#define NV_ID_MATTER_AREA_START           0x6000 /* NV restore matter cert region flag */
 #define NV_ID_RESTORE_ENABLE              0xA000 /* NV restore factory region flag */
 
 #endif /* __KEY_ID_H__ */

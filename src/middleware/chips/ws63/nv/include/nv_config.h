@@ -76,7 +76,7 @@
 
 /* 特性： 支持NV加密 */
 #ifndef CONFIG_NV_SUPPORT_ENCRYPT
-#define CONFIG_NV_SUPPORT_ENCRYPT               NV_NO
+#define CONFIG_NV_SUPPORT_ENCRYPT               NV_YES
 #endif
 
 /* 特性： 支持NV跳过被破坏的NV项 */
@@ -87,6 +87,11 @@
 /* 特性： 加密NV使用HASH校验 */
 #ifndef CONFIG_NV_SUPPORT_HASH_FOR_CRYPT
 #define CONFIG_NV_SUPPORT_HASH_FOR_CRYPT        NV_NO
+#endif
+
+/* 特性：KEY变更通知 */
+#ifndef CONFIG_NV_SUPPORT_CHANGE_NOTIFY
+#define CONFIG_NV_SUPPORT_CHANGE_NOTIFY         NV_NO
 #endif
 
 /* NV debug */
@@ -104,7 +109,7 @@
 #define CONFIG_NV_SUPPORT_CRC16_VERIFY          NV_NO
 #endif
 
-/* 特性：NV备份单独存放 */
+/* 特性：NV备份区单独存放 */
 #ifndef CONFIG_NV_SUPPORT_BACKUP_REGION
 #define CONFIG_NV_SUPPORT_BACKUP_REGION         NV_YES
 #endif

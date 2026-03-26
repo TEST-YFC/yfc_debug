@@ -122,7 +122,7 @@ class CopyModule:
     def copy_file_header(self, file):
         file_path = os.path.dirname(file)
         for inner_file in os.listdir(file_path):
-            if not inner_file.endswith('.h'):
+            if not inner_file.endswith('.h') and not inner_file.endswith('.inl'):
                 continue
             tmp_src = "%s/%s" %(file_path, inner_file)
             tmp_dest = "%s/%s" %(file_path.replace(root_path, sdk_output_path), inner_file)

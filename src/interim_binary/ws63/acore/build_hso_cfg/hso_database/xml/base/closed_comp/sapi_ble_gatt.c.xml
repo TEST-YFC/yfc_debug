@@ -41,8 +41,8 @@
 			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt create service service_handle:0x%x. @sapi_ble_gatt.c(606),INFO" ID="0xdeae12f5" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt add server add service error:0x%x. @sapi_ble_gatt.c(621),ERROR" ID="0xdeae136a" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="gatt start service OK! serviceId = 0x%x.  @sapi_ble_gatt.c(625),INFO" ID="0xdeae138d" />
-			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt add server add service error:0x%x. @sapi_ble_gatt.c(637),ERROR" ID="0xdeae13ea" />
-			<MSG STRUCTURE="diag_log_msg1" NAME="gatt start service OK! serviceId = 0x%x. @sapi_ble_gatt.c(640),INFO" ID="0xdeae1405" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt remove server stop service error:0x%x. @sapi_ble_gatt.c(637),ERROR" ID="0xdeae13ea" />
+			<MSG STRUCTURE="diag_log_msg1" NAME="gatt stop service OK! serviceId = 0x%x. @sapi_ble_gatt.c(640),INFO" ID="0xdeae1405" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt add include service add include error:0x%x. @sapi_ble_gatt.c(651),ERROR" ID="0xdeae145a" />
 			<MSG STRUCTURE="diag_log_msg0" NAME="ble general gatt add characteristic new fail @sapi_ble_gatt.c(667),ERROR" ID="0xdeae14da" />
 			<MSG STRUCTURE="diag_log_msg1" NAME="ble general gatt add characteristic len:0x%x. @sapi_ble_gatt.c(674),ERROR" ID="0xdeae1512" />

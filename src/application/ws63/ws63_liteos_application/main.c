@@ -134,6 +134,10 @@
 #define AT_STACK_SIZE           0x2000
 #define WIFI_STACK_SIZE         0x2000
 
+#ifdef CONFIG_SUPPORT_MATTER
+#define MATTER_STACK_SIZE       0x2000
+#endif
+
 #ifdef CONFIG_RADAR_SERVICE
 #define TASK_PRIORITY_RD_D        23
 #define TASK_PRIORITY_RD_F        24
@@ -169,6 +173,8 @@ static void at_sys_cmd_register_weakref(void) __attribute__ ((weakref("at_sys_cm
 
 #ifdef BTH_TASK_EXIST
 static void at_bt_cmd_register_weakref(void) __attribute__ ((weakref("at_bt_cmd_register")));
+static void at_bt_sle_cmd_register_weakref(void) __attribute__ ((weakref("at_bt_sle_cmd_register")));
+static void at_bt_sle_common_cmd_register_weakref(void) __attribute__ ((weakref("bth_sle_common_at_cmd_register")));
 void bt_acore_task_main(void);
 void bt_tran_task_queue_init(void);
 void recv_data_task(void);
@@ -198,7 +204,6 @@ static const app_task_definition_t g_app_tasks[] = {
 #ifdef BTH_TASK_EXIST
     {"bt_sdk",          BT_SDK_STACK_SIZE,   TASK_PRIORITY_SDK,      (osal_kthread_handler)bt_acore_task_main},
     {"bth_sdk",         BTH_SDK_STACK_SIZE,  TASK_PRIORITY_BTH_SDK,  (osal_kthread_handler)sdk_msg_thread},
-    {"recvBthDataTask", BTH_RECV_STACK_SIZE, TASK_PRIORITY_BTH_RECV, (osal_kthread_handler)recv_data_task},
     { "bt_service",   BTH_SERVICE_STACK_SIZE, TASK_PRIORITY_SRV,     (osal_kthread_handler)btsrv_task_body},
 #endif
 #ifdef AT_COMMAND
@@ -219,6 +224,9 @@ static const app_task_definition_t g_app_tasks[] = {
 #ifdef CONFIG_SUPPORT_HILINK
     {"hilink", WIFI_STACK_SIZE, TASK_PRIORITY_WF, (osal_kthread_handler)hilink_entry},
 #endif
+#ifdef CONFIG_SUPPORT_MATTER
+    {"matter", MATTER_STACK_SIZE, TASK_PRIORITY_APP, (osal_kthread_handler)MatterAppEntry},
+#endif
 };
 
 static void systick_cali_xclk_bottom_half(void);
@@ -230,6 +238,24 @@ static void systick_cali_xclk_bottom_half(void);
 #define PATCH_CMP_HEADINFO_NUM 3
 static uint32_t patch_remap[PATCH_NUM * PATCH_REMAP_TAB_WORD_NUM] __attribute__((section(".patch_remap"))) = { 0 };
 static uint32_t patch_cmp[PATCH_NUM + PATCH_CMP_HEADINFO_NUM] __attribute__((section(".patch_cmp"))) = { 0 };
+
+typedef void (*SystemInitFunc)(void);
+extern char __init_array_start;
+extern char __init_array_end;
+
+static void system_init_array(uintptr_t start, uintptr_t end)
+{
+    if (start >= end) {
+        return;
+    }
+
+    SystemInitFunc func;
+    uintptr_t *it = (uintptr_t *)start;
+    for (; it != (uintptr_t *)end; ++it) {
+        func = (SystemInitFunc)(*it);
+        func();
+    }
+}
 
 static void patch_init(void)
 {
@@ -436,6 +462,9 @@ static void hw_init(void)
     uapi_drv_cipher_env_init();
 #if defined(CONFIG_MIDDLEWARE_SUPPORT_NV) && defined(CONFIG_OTA_UPDATE_SUPPORT)
 #if (defined(CONFIG_NV_SUPPORT_OTA_UPDATE) && (defined(NV_YES)) && (CONFIG_NV_SUPPORT_OTA_UPDATE == NV_YES))
+#if (defined(CONFIG_NV_SUPPORT_ENCRYPT) && (defined(NV_YES)) && (CONFIG_NV_SUPPORT_ENCRYPT == NV_YES))
+    uapi_drv_cipher_symc_init();
+#endif
     (void)ws63_upg_init();
     (void)uapi_drv_cipher_hash_init();
     (void)nv_upg_upgrade_task_process();
@@ -498,14 +527,29 @@ static void at_base_api_register(void)
 }
 #endif
 
-static void cpu_cache_init(void)
+#define WRITE_CUSTOM_CSR_VAL(csrRegAddr, csrVal) do {            \
+    if (__builtin_constant_p(csrVal))  {                         \
+        asm volatile("li t0," "%0" : : "i"(csrVal));             \
+    } else {                                                     \
+        asm volatile("mv t0," "%0" : : "r"(csrVal));             \
+    }                                                            \
+    asm volatile("csrw %0, t0" :: "i"(csrRegAddr));              \
+} while (0)
+
+__attribute__((section(".text.runtime.init"))) static void cpu_cache_init(void)
 {
-    ArchICacheFlush();
-    ArchDCacheInvalidate();
-    ArchICacheEnable(CACHE_32KB);
-    ArchICachePrefetchEnable(CACHE_PREF_1_LINES);
-    ArchDCacheEnable(CACHE_4KB);
-    return;
+    /* ArchICacheFlush */
+    WRITE_CUSTOM_CSR_VAL(ICMAINT, ICACHE_BY_ALL);
+    mb();
+    /* ArchDCacheInvalidate */
+    WRITE_CUSTOM_CSR_VAL(DCMAINT, DCACHE_INV_BY_ALL);
+    mb();
+    /* icache enable */
+    WRITE_CUSTOM_CSR_VAL(ICCTL, (uint32_t)((uint32_t)CACHE_32KB | ICCTL_ENABLE));
+    /* ICachePrefetchEnable */
+    WRITE_CUSTOM_CSR_VAL(APREFI, (uint32_t)(((uint32_t)CACHE_PREF_1_LINES << 1) | IAPEN)); /* 1: ICL control bits */
+    /* ArchDCacheEnable */
+    WRITE_CUSTOM_CSR_VAL(DCCTL, (uint32_t)((uint32_t)CACHE_4KB | DCCTL_ENABLE));
 }
 
 #ifdef LOG_SUPPORT
@@ -520,6 +564,7 @@ static void sys_fault_handler(uint32_t exc_type, exc_context_t *exc_buff_addr)
 {
     (void)OsDbgTskInfoGet(OS_ALL_TASK_MASK);
     OsExcStackInfo();
+    sys_mem_show();
     do_fault_handler(exc_type, exc_buff_addr);
 }
 
@@ -544,6 +589,15 @@ static void do_at_cmd_register(void)
     if ((void *)at_bt_cmd_register_weakref != NULL) {
         at_bt_cmd_register_weakref();
     }
+#ifndef DISABLE_SLE_AT
+    if ((void *)at_bt_sle_cmd_register_weakref != NULL) { // 产测AT
+        at_bt_sle_cmd_register_weakref();
+    }
+
+    if ((void *)at_bt_sle_common_cmd_register_weakref != NULL) { // 公共AT
+        at_bt_sle_common_cmd_register_weakref();
+    }
+#endif
 #endif
 #ifdef CONFIG_RADAR_SERVICE
 #ifndef DISABLE_RADAR
@@ -559,12 +613,12 @@ __attribute__((weak)) void OHOS_SystemInit(void)
 {
     return;
 }
+
 LITE_OS_SEC_TEXT_INIT int main(void)
 {
     patch_init();
     uapi_partition_init();
     pmp_enable();
-    cpu_cache_init();
 #ifdef BOARD_ASIC
     // 在OS启动之前设置工作时钟
     set_uart_tcxo_clock_period();
@@ -618,6 +672,8 @@ LITE_OS_SEC_TEXT_INIT int main(void)
     fs_adapt_mount();
     PRINT("=========FS READY=========\r\n");
 #endif
+
+    system_init_array((uintptr_t)&__init_array_start, (uintptr_t)&__init_array_end);
 
     main_initialise(NULL, 0);
 
@@ -715,6 +771,7 @@ __attribute__((section(".text.runtime.init"))) void do_relocation(void)
 __attribute__((section(".text.runtime.init"))) void runtime_init(void)
 {
     dyn_mem_cfg();
+    cpu_cache_init();
 #ifndef CHIP_EDA
     do_relocation();
 #endif

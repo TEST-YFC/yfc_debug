@@ -79,7 +79,7 @@ rt_err_t rt_completion_wait_flags_noisr(struct rt_completion *completion,
     } else {
         return RT_EINVAL;
     }
-    return ret == 0? RT_ETIMEOUT : RT_EOK;
+    return ret == 0? -RT_ETIMEOUT : RT_EOK;
 }
 
 void rt_completion_done(struct rt_completion *completion)

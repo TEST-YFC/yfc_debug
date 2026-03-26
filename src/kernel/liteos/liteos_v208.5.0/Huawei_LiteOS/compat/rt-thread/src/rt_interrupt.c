@@ -32,12 +32,6 @@
 #include "rtdef.h"
 #include "rthw.h"
 #include "rtthread.h"
-#include "arch/regs.h"
-#include "riscv_interrupt.h"
-#include "los_hwi_pri.h"
-
-#define RT_OS_RIGISTER_BIT_NUM         32U
-#define RT_GET_LOAL_INTER_NUM_ENABLE(regValue, hwiNum) ((regValue >> (hwiNum % RT_OS_RIGISTER_BIT_NUM)) & 0x1)
 
 #define INVALID_VALUE   0xDEEDBEEF       // Invalid parameter test
 #define RTT_DEFAULT_PRIORITY      6      // init default interrupt priority
@@ -58,9 +52,11 @@ void rt_interrupt_leave_sethook(void (*hook)(void))
 }
 #endif /* RT_USING_HOOK */
 
+#ifdef LOSCFG_DEBUG_HWI
 STATIC void* g_rttpDevIdTable[LOSCFG_PLATFORM_HWI_LIMIT] = {
     [0 ... LOSCFG_PLATFORM_HWI_LIMIT - 1] = (void*)0xDEEDBEEF};           // record rtt interrupt pDevId
 STATIC void* g_oldHandlerRecord[LOSCFG_PLATFORM_HWI_LIMIT] = {NULL};                 // record old handler
+#endif
 
 void rt_hw_interrupt_set_priority(int hwiNum, unsigned int priority);
 void rt_hw_interrupt_clear_pending(int hwiNum);
@@ -122,35 +118,7 @@ void rt_hw_interrupt_umask(int hwiNum)
     LOS_HwiEnable(hwiNum);
 }
 
-STATIC UINT32 RtIrqGetEnableStatus(UINT32 hwiNum)
-{
-    UINT32 idx = hwiNum / RT_OS_RIGISTER_BIT_NUM;
-    UINT32 value;
-
-    /* enable interrupt of register num 0-4 */
-    switch (idx) {
-        case LOCIEN_REG0:
-            value = READ_CSR(mie);
-            break;
-        case LOCIEN_REG1:
-            value = READ_CUSTOM_CSR(LOCIEN0);
-            break;
-        case LOCIEN_REG2:
-            value = READ_CUSTOM_CSR(LOCIEN1);
-            break;
-        case LOCIEN_REG3:
-            value = READ_CUSTOM_CSR(LOCIEN2);
-            break;
-        case LOCIEN_REG4:
-            value = READ_CUSTOM_CSR(LOCIEN3);
-            break;
-        default:
-            PRINT_ERR("Irq index error\n");
-            return OS_HWI_UNSUPPORTED_STATUS ;
-    }
-    return RT_GET_LOAL_INTER_NUM_ENABLE(value, hwiNum);
-}
-
+#ifdef LOSCFG_DEBUG_HWI
 rt_isr_handler_t rt_hw_interrupt_install(int hwiNum, rt_isr_handler_t handler,
                                          void *param, const char *name)
 {
@@ -175,12 +143,15 @@ rt_isr_handler_t rt_hw_interrupt_install(int hwiNum, rt_isr_handler_t handler,
     los_param.swIrq  = hwiNum;
     los_param.pDevId = g_rttpDevIdTable[hwiNum];
     los_param.pName  = name;
-
-    /* LOS_HwiDelete may disable interrupt, so it is necessary to record
-    * the current interrupt enable status to facilitate subsequent restoration.
-    * However, if the current state is off, it will not turn on subsequently.
-    */
-    level = RtIrqGetEnableStatus(hwiNum);
+    HwiStatus status;
+    ret = g_hwiOps->getIrqStatus(hwiNum, &status);
+    if (ret == LOS_OK) {
+        /* LOS_HwiDelete may disable interrupt, so it is necessary to record
+         * the current interrupt enable status to facilitate subsequent restoration.
+         * However, if the current state is off, it will not turn on subsequently.
+         */
+        level = status.enable;
+    }
     LOS_HwiDelete(hwiNum, &los_param);
 
     g_rttpDevIdTable[hwiNum] = param;
@@ -203,6 +174,7 @@ rt_isr_handler_t rt_hw_interrupt_install(int hwiNum, rt_isr_handler_t handler,
 
     return old_handler;
 }
+#endif
 
 int rt_hw_interrupt_get_irq(void)
 {
@@ -250,16 +222,6 @@ unsigned int rt_hw_interrupt_get_priority(int hwiNum)
     return status.pri;
 }
 #endif
-
-void rt_hw_interrupt_set_priority_mask(unsigned int priority)
-{
-    LOS_HwiPrioMaskSet(priority);
-}
-
-unsigned int rt_hw_interrupt_get_priority_mask(void)
-{
-    return LOS_HwiPrioMaskGet();
-}
 
 #ifdef RT_USING_SMP
 void rt_hw_ipi_send(int ipi_vector, unsigned int cpu_mask)

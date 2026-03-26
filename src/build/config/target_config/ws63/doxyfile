@@ -58,7 +58,7 @@ PROJECT_LOGO           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = ./../../../output/document
+OUTPUT_DIRECTORY       = ./../../../../output/document
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -264,8 +264,8 @@ TAB_SIZE               = 4
 ALIASES                = "tagGreenTick=@htmlonly<CENTER><font color= green>✔</font></CENTER>@endhtmlonly" \
                          "tagRedCross=@htmlonly<CENTER><font color= red>✖</font></CENTER>@endhtmlonly" \
                          "tagBlackQue=@htmlonly<CENTER><font color= black>?</font></CENTER>@endhtmlonly" \
-                         "CompanyNameMagicTag=Unname." \
-                         "CompanyNameTag=Unname."
+                         "HiSilicon (Shanghai) Technologies Co., Ltd.=Unname." \
+                         "=Unname."
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -805,7 +805,7 @@ WARN_NO_PARAMDOC       = NO
 # a warning is encountered.
 # The default value is: NO.
 
-WARN_AS_ERROR          = YES
+WARN_AS_ERROR          = NO
 
 # The WARN_FORMAT tag determines the format of the warning messages that doxygen
 # can produce. The string should contain the $file, $line, and $text tags, which
@@ -964,6 +964,10 @@ INPUT                  =    ./../../../../build/config/target_config/ws63/doc/dr
                             ./../../../../include/middleware/services/wifi/wifi_scan_info.h \
                             \
                             ./../../../../include/middleware/services/radar/radar_service.h \
+                            ./../../../../include/middleware/services/radar/radar_service_slp.h \
+                            ./../../../../include/middleware/services/radar/radar_service_sub_6g.h \
+                            ./../../../../include/middleware/services/radar/radar_errcode.h \
+                            \
                             ./../../../../kernel/osal/include/memory/osal_addr.h \
                             ./../../../../kernel/osal/include/atomic/osal_atomic.h \
                             ./../../../../kernel/osal/include/memory/osal_barrier.h \
@@ -2128,7 +2132,7 @@ MAN_LINKS              = NO
 # captures the structure of the code including all documentation.
 # The default value is: NO.
 
-GENERATE_XML           = NO
+GENERATE_XML           = YES
 
 # The XML_OUTPUT tag is used to specify where the XML pages will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of

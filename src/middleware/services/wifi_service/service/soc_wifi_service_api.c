@@ -2177,7 +2177,6 @@ OSAL_STATIC void wifi_sta_connect_fill_security_type(ext_wifi_assoc_request *req
     ext_wifi_auth_mode auth_type = EXT_WIFI_SEC_TYPE_INVALID;
     ext_wifi_ap_info *ap_list = NULL;
     ext_wifi_pairwise pairwise = EXT_WIFI_PARIWISE_UNKNOWN;
-    int32_t ret;
 
     req->auth = auth_type;
     ap_list = (ext_wifi_ap_info *)malloc(sizeof(ext_wifi_ap_info) * num);
@@ -2186,8 +2185,7 @@ OSAL_STATIC void wifi_sta_connect_fill_security_type(ext_wifi_assoc_request *req
         return;
     }
 
-    ret = uapi_wifi_get_scan_results(ap_list, &num);
-    if (ret != EXT_WIFI_OK) {
+    if (uapi_wifi_get_scan_results(ap_list, &num) != EXT_WIFI_OK) {
         service_error_log1(SERVICE_ERROR, "Srv:%d", __LINE__);
         free(ap_list);
         return;
@@ -2206,6 +2204,10 @@ OSAL_STATIC void wifi_sta_connect_fill_security_type(ext_wifi_assoc_request *req
             pairwise = ap_list[i].pairwise;
             rssi = ap_list[i].rssi / 100; /* 除以100获得实际的rssi */
             ft_flag = ap_list[i].ft_flag;
+            if (((auth_type == EXT_WIFI_SECURITY_SAE) || (auth_type == EXT_WIFI_SECURITY_WPA3_WPA2_PSK_MIX)) &&
+                strlen(req->ssid) == 0) { /* ssid为空时，根据ap_list中的ssid填充，防止指定bssid关联wpa3失败 */
+                memcpy_s(req->ssid, EXT_WIFI_MAX_SSID_LEN, ap_list[i].ssid, EXT_WIFI_MAX_SSID_LEN);
+            }
             if (g_sta_conn_config.channel != 0 && memcpy_s(g_sta_conn_config.bssid, sizeof(g_sta_conn_config.bssid),
                 ap_list[i].bssid, sizeof(ap_list[i].bssid)) != EOK) {
                 free(ap_list);

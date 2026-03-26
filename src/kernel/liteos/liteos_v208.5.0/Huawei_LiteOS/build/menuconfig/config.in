@@ -530,6 +530,13 @@ config LOSCFG_MEM_LEAKCHECK
     help
       Answer Y to enable record the LR of Function call stack of Mem operation, it can check the mem leak through the infomations of mem node.
 
+config LOSCFG_MEM_LEAKCHECK_CUSTOM
+    bool "Enable Function call stack of Mem operation recorded by custom hook"
+    default n
+    depends on LOSCFG_MEM_LEAKCHECK
+    help
+      Answer Y to enable record the LR of Function call stack of Mem operation by user defined hook, it can check the mem leak through the infomations of mem node.
+
 config LOSCFG_MEM_OMIT_LR_CNT
     int "Number of ignored layers for backtrace."
     range 0 LOSCFG_MEM_RECORD_LR_CNT

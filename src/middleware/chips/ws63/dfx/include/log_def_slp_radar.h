@@ -9,8 +9,10 @@
 #define LOG_DEF_SLP_RADAR_H_
  
 typedef enum {
+// only for glp extern part
     SLP_FILE_ID_EXT_START = 901,
-    ASSEMBLE_PARSE_RADAR_MSG_C,
+    ASSEMBLE_RADAR_MSG_C,
+    PARSE_RADAR_MFG_MSG_C,
     SLP_LOG_UTILS_C,
     SLP_RADAR_CLIENT_MAIN_C,
     SLP_RADAR_INTERFACE_C,

@@ -160,6 +160,10 @@ def make_all_in_one_packet(pack_style_str, extr_defines):
             'ws63-liteos-app_rom.bin',
             'ws63-liteos-app-sign.bin',
         ],
+        'ws63-liteos-matter': [
+            'ws63-liteos-app_rom.bin',
+            'ws63-liteos-app-sign.bin',
+        ],
         'ws63-liteos-spi-host': [
             'ws63-liteos-spi-host_rom.bin',
             'ws63-liteos-spi-host-sign.bin',
@@ -200,9 +204,13 @@ def make_all_in_one_packet(pack_style_str, extr_defines):
             'ws63-liteos-app-iot_rom.bin',
             'ws63-liteos-app-iot-sign.bin',
         ],
-        'ws63-liteos-testsuite-radar': [
-            'ws63-liteos-testsuite-radar.bin',
-            'ws63-liteos-testsuite-radar-sign.bin',
+        'ws63-liteos-slp-radar': [
+            'ws63-liteos-slp-radar.bin',
+            'ws63-liteos-slp-radar-sign.bin',
+        ],
+        'ws63-liteos-slp-radar-perf': [
+            'ws63-liteos-slp-radar-perf.bin',
+            'ws63-liteos-slp-radar-perf-sign.bin',
         ]
     }
 

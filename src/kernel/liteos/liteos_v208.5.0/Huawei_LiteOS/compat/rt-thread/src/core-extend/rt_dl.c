@@ -25,6 +25,9 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+#ifdef LOSCFG_KERNEL_DYNLOAD
+
 #include <rthw.h>
 
 #include "rtthread.h"
@@ -33,7 +36,6 @@
 #include "dlelf.h"
 #include "los_printf.h"
 #include "los_ld_elflib.h"
-
 
 void *dlopen(const char *filename, int flag)
 {
@@ -104,3 +106,4 @@ rt_ubase_t dlmodule_symbol_find(const char *sym_str)
     RT_UNUSED(sym_str);
     return RT_EOK;
 }
+#endif

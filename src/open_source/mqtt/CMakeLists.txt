@@ -57,6 +57,7 @@ set(PRIVATE_DEFINES
 )
 
 set(PUBLIC_DEFINES
+    IOT_LITEOS_ADAPT
 )
 
 # use this when you want to add ccflags like -include xxx

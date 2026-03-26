@@ -4,7 +4,6 @@
 #===============================================================================
 cmake_minimum_required(VERSION 3.14.1)
 set(CMAKE_SYSTEM_NAME "Generic")
-
 if(DEFINED ENV{build_ws63_sdk_open})
     set(build_lib true)
 else()
@@ -39,7 +38,6 @@ include("${CMAKE_DIR}/build_command.cmake")
 include("${CMAKE_DIR}/build_hso_database.cmake")
 include("${CMAKE_DIR}/build_component.cmake")
 include("${CMAKE_DIR}/build_sdk.cmake")
-
 include_directories(${ROOT_DIR}/kernel/liteos/liteos_v208.5.0/Huawei_LiteOS/targets/ws63/include)
 
 if(EXISTS "${ROOT_DIR}/kernel/liteos/liteos_v208.5.0/${TARGET_COMMAND}")
@@ -96,6 +94,7 @@ add_subdirectory_if_exist(include)
 add_subdirectory_if_exist(vendor)
 
 include("${CMAKE_DIR}/open_source.cmake")
+include("${CMAKE_DIR}/middleware/hwsec_c.cmake")
 include("${CMAKE_DIR}/build_linker.cmake")
 
 if (NOT DEFINED ROM_COMPONENT)

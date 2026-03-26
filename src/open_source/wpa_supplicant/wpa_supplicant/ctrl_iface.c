@@ -3586,9 +3586,10 @@ static int wpa_supplicant_ctrl_iface_select_network(
 	if (ssid && (wpa_is_sta(wpa_s) == WPA_FLAG_ON))
 		g_connecting_ssid = ssid;
 #endif /* LOS_WPA_PATCH */
-
+#ifndef EXT_CODE_CROP
 	wpa_s->scan_min_time.sec = 0;
 	wpa_s->scan_min_time.usec = 0;
+#endif
 	wpa_supplicant_select_network(wpa_s, ssid);
 
 	return 0;
@@ -9283,7 +9284,7 @@ static void wpas_ctrl_scan(struct wpa_supplicant *wpa_s, char *params,
 	int scan_id[MAX_SCAN_ID];
 #endif /* EXT_CODE_CROP */
 	void (*scan_res_handler)(struct wpa_supplicant *wpa_s,
-				 struct wpa_scan_results *scan_res);
+				 struct wpa_scan_results *scan_res) = NULL;
 	int *manual_scan_freqs = NULL;
 	struct wpa_ssid_value *ssid	 = NULL;
 	struct wpa_ssid_value *ns	 = NULL;

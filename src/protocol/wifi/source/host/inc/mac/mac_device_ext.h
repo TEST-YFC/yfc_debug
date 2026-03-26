@@ -717,6 +717,8 @@ typedef struct {
     osal_u8 scan_flag;  /* 内核下发的扫描模式,每个bit意义见wlan_scan_flag_enum，暂时只解析是否为并发扫描 */
     osal_u8 scan_func;  /* DMAC SCANNER 扫描模式 */
     osal_u8 vap_id;     /* 下发扫描请求的vap id */
+    wlan_scan_mode_enum_uint8 scan_end_mode;
+    osal_u8 rsv[3];
     osal_u64 cookie;    /* P2P 监听下发的cookie 值 */
 
     /* 重要:回调函数指针:函数指针必须放最后否则核间通信出问题 */

@@ -118,8 +118,6 @@ rt_err_t rt_mp_detach(struct rt_mempool *mp)
     mp->block_free_count = 0;
     mp->block_total_count = 0;
 
-    mp = NULL;
-
     return RT_EOK;
 }
 
@@ -168,7 +166,6 @@ rt_err_t rt_mp_delete(rt_mp_t mp)
     rt_mp_detach(mp);
     LOS_MemFree(m_aucSysMem0, mp->start_address);
     LOS_MemFree(m_aucSysMem0, mp);
-    mp = NULL;
     return RT_EOK;
 }
 
@@ -224,8 +221,6 @@ void rt_mp_free(void *node)
     }
 
     mp->block_free_count++;
-
-    node = NULL;
 
     LOS_TaskUnlock();
 }

@@ -619,7 +619,7 @@ static errcode_t hal_spi_ctrl_select_slave(spi_bus_t bus, hal_spi_ctrl_id_t id, 
         return ERRCODE_SPI_TIMEOUT;
     }
     uint32_t slave = (uint32_t)param;
-    hal_spi_ser_set_ser(bus, slave);
+    hal_spi_ser_set_ser(bus, bit(slave));
     g_hal_spi_attrs[bus].slave_num = slave + 1;
 
     return ERRCODE_SUCC;

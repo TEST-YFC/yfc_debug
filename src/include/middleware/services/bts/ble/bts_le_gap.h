@@ -12,10 +12,10 @@
 #ifndef BTS_LE_GAP_H
 #define BTS_LE_GAP_H
 
+#include <stdbool.h>
 #include <stdint.h>
 #include "errcode.h"
 #include "bts_def.h"
-#include "stdbool.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -365,6 +365,8 @@ typedef struct {
                                     @else   发送功率,单位dbm,范围-127~20 @endif */
     uint32_t duration;         /*!< @if Eng Duration
                                     @else   广播持续发送时长,单位dbm @endif */
+    uint8_t max_events;        /*!< @if Eng max_events
+                                    @else   广播发送次数,单位:次 @endif */
 } gap_ble_adv_params_t;
 
 /**
@@ -1106,7 +1108,26 @@ errcode_t enable_ble(void);
  * @endif
  */
 errcode_t disable_ble(void);
-
+/**
+ * @if Eng
+ * @brief Use this funtion to check BLE stack status.
+ * @par  Use this funtion to check BLE stack status.
+ * @attention NULL
+ * @param  NULL
+ * @retval true BLE stack is enable, false BLE stack is not enable.
+ * @par Dependency:
+ * @li  bts_def.h
+ * @else
+ * @brief  检测协议栈是否使能。
+ * @par    检测协议栈是否使能。
+ * @attention 无
+ * @param  无
+ * @retval true 协议栈已经使能，false协议栈未使能。
+ * @par 依赖:
+ * @li  bts_def.h
+ * @endif
+ */
+bool ble_is_enable(void);
 /**
  * @if Eng
  * @brief Use this funtion to set local device address.
@@ -1293,7 +1314,26 @@ errcode_t gap_ble_start_adv(uint8_t adv_id);
  * @endif
  */
 errcode_t gap_ble_stop_adv(uint8_t adv_id);
-
+/**
+ * @if Eng
+ * @brief Use this funtion to set adv random delay.
+ * @par   Use this funtion to set adv random delay.
+ * @attention NULL
+ * @param  [in] adv_id advertising ID
+ * @param  [in] enable Whether to enable random delay(1: enable, 0: disable)
+ * @par Dependency:
+ * @li  bts_def.h
+ * @else
+ * @brief  设置广播随机延迟开关
+ * @par    设置广播随机延迟开关
+ * @attention 无
+ * @param  [in] adv_id 广播ID
+ * @param  [in] enable 是否开启随机时延(1: 开启, 0: 关闭)
+ * @par 依赖:
+ * @li  bts_def.h
+ * @endif
+ */
+errcode_t gap_ble_set_adv_random_delay(uint8_t adv_id, uint8_t enable);
 /**
  * @if Eng
  * @brief Use this funtion to set scan parameter.

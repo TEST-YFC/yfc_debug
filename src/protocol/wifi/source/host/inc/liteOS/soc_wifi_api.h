@@ -3078,6 +3078,30 @@ short uapi_wifi_get_mac_status_code(void);
 
 /**
 * @ingroup  soc_wifi_basic
+* @brief  Get Reason Codes for Disassoc and Deauth Frames.
+*         CNcomment:查询disassoc与deauth帧的reason code.CNend
+*
+* @par Description:
+*           Get Reason Codes for Disassoc and Deauth Frames.
+*           CNcomment:查询disassoc与deauth帧的reason code.CNend
+* @attention CNcomment:
+*            1.返回值为802.11协议中disassoc与deauth帧的reason code
+*            2.网卡类型为STA时使用，在STA断连时调用
+*            3.如果返回值为-1，表示未收到被动断连的reason code信息.CNend
+* @param  NULL
+*
+* @retval #Reason Codes value
+*
+*
+* @par Dependency:
+*            @li soc_wifi_api.h: WiFi API
+* @see  NULL
+* @since
+*/
+short uapi_wifi_get_mac_rx_reason_code(void);
+
+/**
+* @ingroup  soc_wifi_basic
 * @brief  Set evm para.CNcomment:设置evm参数.CNend
 *
 * @par Description:

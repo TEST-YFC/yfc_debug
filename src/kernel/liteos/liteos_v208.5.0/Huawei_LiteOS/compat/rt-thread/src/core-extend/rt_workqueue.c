@@ -207,11 +207,28 @@ rt_err_t rt_workqueue_cancel_work(struct rt_workqueue *queue, struct rt_work *wo
     if (losw == NULL) {
         return RT_ERROR;
     }
+    LOS_TaskLock();
+    int found = 0;
+    struct rt_list_node *cur;
+    rt_list_for_each(cur, &queue->work_list) {
+        if (cur == &work->list) {
+            found = 1;
+            break;
+        }
+    }
+    LOS_TaskUnlock();
+    if (!found) {
+        return RT_ERROR;
+    }
+
+    rt_list_remove(&(work->list));
+
     struct wq_node *wn = rt_find_work_node(losw);
     if (wn != NULL) {
         rt_list_remove(&wn->node);
         LOS_MemFree(m_aucSysMem0, wn->losw);
         LOS_MemFree(m_aucSysMem0, wn);
+        set_losw_to_rtw(work, NULL);
     }
     LOS_ListDelInit(&losw->entry);
     return RT_EOK;

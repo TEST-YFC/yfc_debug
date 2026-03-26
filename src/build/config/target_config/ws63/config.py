@@ -40,10 +40,8 @@ target = {
             "UPDATE_WIFI_STATIC_LIB",
             "UPDATE_BTC_STATIC_LIB",
             "CONFIG_NV_SUPPORT_SINGLE_CORE_SYSTEM", 'CONFIG_OTA_UPDATE_SUPPORT',
-            "MBEDTLS_HARDEN_OPEN",
             'CONFIG_UART_SUPPORT_LPM',
             "_PRE_RADAR_CCA_SW_OPT",
-            "MBEDTLS_CONFIG_FILE=\"config-ws-iot.h\"",
             "CONFIG_NO_VERIFY_TLS_TIME",
             "CHBA_SUPPORT",
             "_PRE_WLAN_FEATURE_SLE_BRIDGE",
@@ -62,7 +60,7 @@ target = {
             'chip_ws63', 'pmp_cfg_ws63',
             'reboot', 'hal_reboot', 'reboot_port', 'cpu_utils', 'hal_cpu_core',
             'gpio','hal_gpio_v150','gpio_port',
-            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls", "wpa_supplicant",
+            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls_v3.6.0", 'mbedtls_harden', "wpa_supplicant",
             "at", "wifi_driver_hmac", "wifi_driver_dmac", "wifi_driver_tcm", "wifi_at", "wifi_csa", "wifi_frag", "wifi_alg_txbf", "wifi_alg_temp_protect", "wifi_tx_amsdu",
             "wifi_auto_adjust_freq", "wifi_alg_anti_interference", "wifi_alg_edca_opt", "wifi_alg_cca_opt", "wifi_radar_sensor",
             'wifi_btcoex', "wifi_uapsd_ap", 'sio_port', 'i2s', 'hal_sio',
@@ -90,8 +88,7 @@ target = {
             "coap",
             "sle_netdev", "chba_at",
             "tiot_driver",
-            "mqtt",
-            "lvgl"
+            "lvgl",
         ],
         'ccflags': [
             "-DBOARD_ASIC", '-DPRE_ASIC',
@@ -106,6 +103,22 @@ target = {
         'generate_efuse_bin': True,
         'copy_files_to_interim': True
     },
+
+    'ws63-liteos-matter': {
+        'base_target_name': 'ws63-liteos-app',
+        'liteos_kconfig': 'ws63_matter',
+        'std_libs': ['stdc++', 'atomic'],
+        'defines': [
+            "CONFIG_SUPPORT_MATTER",
+        ],
+        'ram_component': [
+            "-:radar_sensing",
+            "-:radar_at",
+            "-:radar_ai",
+            "matter",
+        ],
+    },
+
     'ws63-flashboot': {
         'base_target_name': 'target_ws63_boot_template',
         'CONFIG_TIMER_USING_V150': 'y',
@@ -126,7 +139,7 @@ target = {
         ],
         'ram_component': [
             "flashboot_common", "common_boot", "ws63_flashboot_lds", "dfx_preserve",
-            "libboundscheck", "chip_ws63", "ws63_mem_config", "common_headers","non_os",
+            "hwsec_c", "chip_ws63", "ws63_mem_config", "common_headers","non_os",
             "sfc_port_ws63", "sfc_flash_config_ws63", "sfc_boot", "hal_sfc",
             "cmn_header", "arch_port", "osal", "dfx_panic", "dfx_exception","cpu_utils",
             '-:rtc', '-:hal_rtc', "common_boot_libc",
@@ -160,7 +173,7 @@ target = {
         ],
         'ram_component': [
             "loaderboot_common", "common_boot", "ws63_loaderboot_lds", "dfx_preserve",
-            "libboundscheck", "chip_ws63", "ws63_mem_config", "common_headers","non_os",
+            "hwsec_c", "chip_ws63", "ws63_mem_config", "common_headers","non_os",
             "sfc_port_ws63", "sfc_flash_config_ws63", "sfc_boot", "hal_sfc",
             "cmn_header", "arch_port", "osal", "dfx_panic", "dfx_exception","cpu_utils",
             '-:rtc', '-:hal_rtc', "common_boot_libc",'soc_port', 'nonos_malloc', 'nonos_malloc_port', 'boot_port_malloc',
@@ -210,7 +223,6 @@ target = {
             "UPDATE_WIFI_STATIC_LIB",
             "UPDATE_BTC_STATIC_LIB",
             "CONFIG_NV_SUPPORT_SINGLE_CORE_SYSTEM", 'CONFIG_OTA_UPDATE_SUPPORT',
-            "MBEDTLS_HARDEN_OPEN",
             'CONFIG_UART_SUPPORT_LPM',
             "_PRE_RADAR_CCA_SW_OPT",
         ],
@@ -227,7 +239,7 @@ target = {
             'chip_ws63', 'pmp_cfg_ws63',
             'reboot', 'hal_reboot', 'reboot_port', 'cpu_utils', 'hal_cpu_core',
             'gpio','hal_gpio_v150','gpio_port',
-            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls", "wpa_supplicant",
+            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls_v3.6.0", 'mbedtls_harden', "wpa_supplicant",
             "at", "wifi_driver_hmac", "wifi_driver_dmac", "wifi_driver_tcm", "wifi_at", "wifi_csa", "wifi_alg_txbf", "wifi_alg_temp_protect", "wifi_tx_amsdu", "wifi_sdp",
             "wifi_auto_adjust_freq", "wifi_promisc", "wifi_alg_anti_interference", "wifi_alg_edca_opt", "wifi_alg_cca_opt", "wifi_sr",
             "wifi_frag", "wifi_mbo", "wifi_bsrp_nfrp", "wifi_slp", "wifi_radar_sensor", "wifi_apf", "wifi_repeater", "wifi_csi", "wifi_wapi", "wifi_wps", "wifi_psd", "wifi_blacklist", "wifi_m2u",
@@ -266,6 +278,8 @@ target = {
         'nv_update':True,
         'copy_files_to_interim': True
     },
+    
+    
     'ws63-liteos-spi-host': {
         'base_target_name': 'target_ws63_app_rom_template',
         'os': 'liteos',
@@ -299,10 +313,8 @@ target = {
             "UPDATE_WIFI_STATIC_LIB",
             "UPDATE_BTC_STATIC_LIB",
             "CONFIG_NV_SUPPORT_SINGLE_CORE_SYSTEM", 'CONFIG_OTA_UPDATE_SUPPORT',
-            "MBEDTLS_HARDEN_OPEN",
             'CONFIG_UART_SUPPORT_LPM',
             "_PRE_RADAR_CCA_SW_OPT",
-            "MBEDTLS_CONFIG_FILE=\"config-ws-iot.h\"",
             "CHBA_SUPPORT",
             "CHBA_LWIP_SWITCH=1",
             "CONFIG_HCC_SUPPORT_SPI",
@@ -323,7 +335,7 @@ target = {
             'chip_ws63', 'pmp_cfg_ws63',
             'reboot', 'hal_reboot', 'reboot_port', 'cpu_utils', 'hal_cpu_core',
             'gpio','hal_gpio_v150','gpio_port',
-            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls", "wpa_supplicant",
+            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls_v3.6.0", 'mbedtls_harden', "wpa_supplicant",
             "at", "wifi_driver_hmac", "wifi_driver_dmac", "wifi_driver_tcm", "wifi_at", "wifi_csa", "wifi_frag", "wifi_alg_txbf", "wifi_alg_temp_protect", "wifi_tx_amsdu",
             "wifi_auto_adjust_freq", "wifi_alg_anti_interference", "wifi_alg_edca_opt", "wifi_alg_cca_opt", "wifi_radar_sensor", "wifi_repeater",
             'wifi_btcoex', "wifi_uapsd_ap", 'sio_port', 'i2s', 'hal_sio',
@@ -397,10 +409,8 @@ target = {
             "UPDATE_WIFI_STATIC_LIB",
             "UPDATE_BTC_STATIC_LIB",
             "CONFIG_NV_SUPPORT_SINGLE_CORE_SYSTEM", 'CONFIG_OTA_UPDATE_SUPPORT',
-            "MBEDTLS_HARDEN_OPEN",
             'CONFIG_UART_SUPPORT_LPM',
             "_PRE_RADAR_CCA_SW_OPT",
-            "MBEDTLS_CONFIG_FILE=\"config-ws-iot.h\"",
             "CHBA_SUPPORT",
             "CONFIG_HCC_SUPPORT_SPI",
             "CHBA_LWIP_SWITCH=1",
@@ -419,7 +429,7 @@ target = {
             'chip_ws63', 'pmp_cfg_ws63',
             'reboot', 'hal_reboot', 'reboot_port', 'cpu_utils', 'hal_cpu_core',
             'gpio','hal_gpio_v150','gpio_port',
-            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls", "wpa_supplicant",
+            "dfx_port_ws63", "algorithm", "cmn_header", "lwip", "lwip_tcm", "wifi_service", "mbedtls_v3.6.0", 'mbedtls_harden', "wpa_supplicant",
             "at", "wifi_driver_hmac", "wifi_driver_dmac", "wifi_driver_tcm", "wifi_at", "wifi_csa", "wifi_frag", "wifi_alg_txbf", "wifi_alg_temp_protect", "wifi_tx_amsdu",
             "wifi_auto_adjust_freq", "wifi_alg_anti_interference", "wifi_alg_edca_opt", "wifi_alg_cca_opt", "wifi_radar_sensor",
             'wifi_btcoex', "wifi_uapsd_ap", 'sio_port', 'i2s', 'hal_sio',

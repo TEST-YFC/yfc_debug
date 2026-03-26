@@ -32,7 +32,7 @@
 
 #define SPI_BUF_MAX_2K 2048
 #define SPI_WAIT_TIME_OUT 0xFFFFFFFF
-#define SPI_WAIT_EVENT_TIME 200
+#define SPI_WAIT_EVENT_TIME 500
 #define BYTE_BIT_LEN        8
 #define SPI_MSG_LEN        8
 #define SPI_MASTER_PIN_MODE 3

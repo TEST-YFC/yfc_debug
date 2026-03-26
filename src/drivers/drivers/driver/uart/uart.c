@@ -593,9 +593,8 @@ errcode_t uapi_uart_deinit(uart_bus_t bus)
     if (!g_uart_inited[bus]) {
         return ERRCODE_SUCC;
     }
-    ret = hal_uart_deinit(bus);
-
     uart_port_unregister_irq(bus);
+    ret = hal_uart_deinit(bus);
 
 #if defined(CONFIG_UART_SUPPORT_RX) || defined(CONFIG_UART_SUPPORT_TX)
     uart_deconfig_state(bus);

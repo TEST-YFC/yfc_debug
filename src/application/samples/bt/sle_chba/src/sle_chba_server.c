@@ -439,7 +439,7 @@ int sle_chba_sample_init(void)
 }
 
 #define SLE_CHBA_SPEED_TASK_PRIO 26
-#define SLE_CHBA_SPEED_STACK_SIZE 0x500
+#define SLE_CHBA_SPEED_STACK_SIZE 0x800
 static void chba_speed_entry(void)
 {
     osal_task *task_handle = NULL;

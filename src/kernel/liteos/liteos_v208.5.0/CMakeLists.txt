@@ -66,16 +66,8 @@ get_target_property(COM_HEADER ${COMPONENT_NAME}_interface INTERFACE_COMPILE_OPT
 MESSAGE(STATUS "COM_HEADER${COM_HEADER}")
 
 if (${build_ws63_sdk_open})
-    if (${TARGET_COMMAND} STREQUAL "ws63-liteos-app")
-        list(APPEND LITEOS_BASELIB "base"  "cmsis" "cpup" "csysdeps" "driverbase"  "init" "interrupt" "linux" "riscv" "targets")
-    elseif (${TARGET_COMMAND} STREQUAL "ws63-liteos-xts")
-        list(APPEND LITEOS_BASELIB "base"  "cmsis" "compat" "console" "cpup" "csysdeps" "driverbase"  "init" "interrupt" "linux" "riscv" "targets" "posix" "vfs")
-    elseif (${TARGET_COMMAND} STREQUAL "ws63-liteos-spi-device")
-        list(APPEND LITEOS_BASELIB "base"  "cmsis"   "cpup" "csysdeps" "driverbase"  "init" "interrupt" "linux" "riscv" "targets")
-    elseif (${TARGET_COMMAND} STREQUAL "ws63-liteos-spi-host")
-        list(APPEND LITEOS_BASELIB "base"  "cmsis"   "cpup" "csysdeps" "driverbase"  "init" "interrupt" "linux" "riscv" "targets")   	
-    endif()
-endif ()
+    list(APPEND LITEOS_BASELIB "interrupt" "riscv")
+endif()
 
 list(REMOVE_DUPLICATES LITEOS_BASELIB)
 set(LOS_LIB "${LITEOS_BASELIB}" CACHE INTERNAL "" FORCE)

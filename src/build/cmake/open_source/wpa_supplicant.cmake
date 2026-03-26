@@ -178,8 +178,6 @@ set(PRIVATE_HEADER
 
 	${ROOT_DIR}/middleware/utils/common_headers/
 
-	${ROOT_DIR}/open_source/mbedtls/mbedtls_v3.1.0/include
-	${ROOT_DIR}/open_source/mbedtls/mbedtls_v3.1.0
 	${ROOT_DIR}/drivers/drivers/driver/watchdog
 	${ROOT_DIR}/include/driver/security_unified
 	${ROOT_DIR}/protocol/wifi/source/host/inc/liteOS
@@ -265,7 +263,6 @@ set(PRIVATE_DEFINES
 	CONFIG_SME
 	CONFIG_SAE
 	CONFIG_ECC
-	MBEDTLS_ECP_RESTARTABLE
 	LTOS_CONFIG_NO_INTERNAL_SME
 	CONFIG_HOSTAPD_WPA3
 	LOS_CONFIG_HOSTAPD_MGMT

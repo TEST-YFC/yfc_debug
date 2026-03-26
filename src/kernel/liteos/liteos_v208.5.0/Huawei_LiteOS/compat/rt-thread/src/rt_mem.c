@@ -104,7 +104,6 @@ void rt_free(void *rmem)
     RT_OBJECT_HOOK_CALL(rt_free_hook, (rmem));
 
     LOS_MemFree(m_aucSysMem0, rmem);
-    rmem = NULL;
 }
 
 void *rt_realloc(void *rmem, rt_size_t newsize)

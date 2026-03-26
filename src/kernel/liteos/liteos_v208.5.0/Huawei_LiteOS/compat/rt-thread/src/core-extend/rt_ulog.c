@@ -87,6 +87,10 @@ void ulog_hexdump(const char *tag, rt_size_t width, const rt_uint8_t *buf, rt_si
 {
     const unsigned char *data = (const unsigned char *)buf;
     rt_size_t i, j;
+    if (width == 0) {
+        dprintf("The width cannot be set to 0!\n");
+        return;
+    }
 
     for (i = 0; i < size; i += width) {
         dprintf("[D/HEX] %s: %04X-%04X: ", tag, i, i + width);

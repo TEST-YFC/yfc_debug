@@ -405,7 +405,11 @@ def get_group_owner(data_dict, save_name):
     file_stat_dict = defaultdict(lambda: [0, 'UNKNOWN'])
     # {c_name : {a_name : [sum_symb_len, group_type, wifi_group_type]}}
     wifi_stat_dict = defaultdict(lambda: defaultdict(lambda: [0, 'UNKNOWN', '']))
-    for symb_info_list in data_dict.values():
+    for symb_info_key, symb_info_list in data_dict.items():
+        # symb_info_key：section_name, rombss存放在固定地址区域，不参与size限制的统计
+        # 且使用符号表链接编译时，rombss段size为0
+        if "rombss" in symb_info_key[0]:
+            continue
         for symb_info in symb_info_list:
             symb_len, a_name, c_name = symb_info[2], symb_info[5], symb_info[6]
             # 去除后缀 .obj 但 .heap .stack .shere_mem 跳过
@@ -439,22 +443,23 @@ def get_group_owner(data_dict, save_name):
             # WIFI
             'WIFI':46.5,
             # RADAR
-            'RADAR':49,
+            'RADAR':43.5,
             'BTC': 20,
             'BTC_CHBA': 1,
-            'BTH': 10, 'UNKNOWN': 0.5, 'STACK':7,'PKTRAM':50},
+            'BTH': 10, 'MESH': 150,
+            'UNKNOWN': 0.5, 'STACK':7,'PKTRAM':50},
             # ws63 A flash
-            'ws63-liteos-app.map_flash':{'PLAT' : 201.7,
+            'ws63-liteos-app.map_flash':{'PLAT' : 204.9,
             # WIFI
-            'WIFI':625.1,
+            'WIFI':590.93,
             # RADAR
-            'RADAR':54,
+            'RADAR':50,
             # BTC
-            'BTC': 147.98,
+            'BTC': 149.98,
             # BTC_CHBA
             'BTC_CHBA': 16,
             # BTH
-            'BTH': 233.31, 'UNKNOWN': 0.5}}
+            'BTH': 234.31, 'MESH': 340.5, 'UNKNOWN': 34.7}}
         lim_i = 0
         for owner, size in group_dict.items():
             size_t = size/BIT_SIZE

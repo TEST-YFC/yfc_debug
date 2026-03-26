@@ -621,7 +621,7 @@ static osal_u32 hmac_bridge_insert_unknow_mac(hmac_vap_bridge_stru *vap_bridge, 
     hash_unknow_new->last_active_timestamp = (osal_u32)oal_time_get_stamp_ms();
 
     /* 加入链表 */
-    osal_spin_unlock(&vap_bridge->map_lock);
+    osal_spin_lock(&vap_bridge->map_lock);
     osal_list_add_tail(&(hash_unknow_new->entry), &(vap_bridge->map_unknow_head[hash_tmp]));
     vap_bridge->map_unknow_num++;
     osal_spin_unlock(&vap_bridge->map_lock);

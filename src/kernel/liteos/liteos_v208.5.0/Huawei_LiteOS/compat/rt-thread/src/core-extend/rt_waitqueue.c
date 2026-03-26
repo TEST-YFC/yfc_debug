@@ -25,12 +25,15 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#ifdef LOSCFG_COMPAT_LINUX_WAITQUEUE
 
 #include <rtthread.h>
 #include <linux/wait.h>
 #include "waitqueue.h"
 
-#ifdef LOSCFG_COMPAT_LINUX_WAITQUEUE
+#define wait_event_adapt_rt(wait, condition, timeout) ({                                                   \
+    (void)LOS_EventRead(&(wait).stEvent, 0x1U, LOS_WAITMODE_AND | LOS_WAITMODE_CLR, timeout);              \
+})
 
 void rt_wqueue_init(rt_wqueue_t *queue)
 {
@@ -42,11 +45,7 @@ void rt_wqueue_init(rt_wqueue_t *queue)
     if (wq == RT_NULL) {
         return;
     }
-    unsigned int ret = LOS_EventInit(&wq->stEvent);
-    if (ret != LOS_OK) {
-        LOS_MemFree((void*)m_aucSysMem0, (void *)wq);
-        return;
-    }
+    init_waitqueue_head(wq);
     // 存储 wait_queue_head_t 的指针到 queue->flag
     queue->flag = (rt_uint32_t)wq;
 }
@@ -55,17 +54,17 @@ void rt_wqueue_init(rt_wqueue_t *queue)
 int rt_wqueue_wait(rt_wqueue_t *queue, int condition, int timeout)
 {
     if (queue == RT_NULL) {
-        return RT_EINVAL;
+        return RT_ERROR;
     }
+    if ((condition) || ((UINT32)timeout == 0))
+        return RT_EOK;
+
     wait_queue_head_t *wq = (wait_queue_head_t *)(queue->flag);
     if (wq == RT_NULL) {
-        return RT_EINVAL;
+        return RT_ERROR;
     }
 
-    int result = wait_event_interruptible_timeout(*wq, condition, (UINT32)timeout);
-    if (result == 0) {
-        return RT_ETIMEOUT;
-    }
+    wait_event_adapt_rt(*wq, condition, (UINT32)timeout);
     return RT_EOK;
 }
 

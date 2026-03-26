@@ -181,7 +181,6 @@ void rt_thread_inited_sethook(void (*hook)(rt_thread_t thread))
 #endif
 
 VOID *g_threadRt2Los[MAX_TASKS];
-UINT32 g_threadTick[MAX_TASKS];
 struct rt_thread g_tidIdle;
 
 static void create_thread_map(rt_thread_t thread, UINT32 taskId)

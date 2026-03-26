@@ -17,6 +17,9 @@
 #include "cmsis_os2.h"
 #include "app_init.h"
 #include "soc_osal.h"
+#ifdef CONFIG_SAMPLE_SUPPORT_MQTT
+#include "mqtt_sample.h"
+#endif
 
 #define WIFI_IFNAME_MAX_SIZE             16
 #define WIFI_MAX_SSID_LEN                33
@@ -166,6 +169,9 @@ td_bool example_check_dhcp_status(struct netif *netif_p, td_u32 *wait_count)
     if ((ip_addr_isany(&(netif_p->ip_addr)) == 0) && (*wait_count <= WIFI_GET_IP_MAX_COUNT)) {
         /* DHCP成功 */
         PRINT("%s::STA DHCP success.\r\n", WIFI_STA_SAMPLE_LOG);
+#ifdef CONFIG_SAMPLE_SUPPORT_MQTT
+        mqtt_publish_client();
+#endif
         return 0;
     }
 

@@ -167,7 +167,7 @@ void pwm_irq_unlock(uint8_t channel)
 
 uint32_t pwm_port_get_clock_value(pwm_channel_t channel)
 {
-    if (channel >= PWM_MAX_NUMBER) {
+    if (channel >= CONFIG_PWM_CHANNEL_NUM) {
         return 0;
     }
     return BUS_CLOCK_TIME_40M;

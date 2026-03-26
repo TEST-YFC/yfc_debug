@@ -115,11 +115,12 @@ def do_cmd(target_name: str, hook_name: str, env: Dict[str, Any])->bool:
     if env.get('generate_efuse_bin'):
         copy_py = os.path.join(SCRIPT_DIR, 'efuse_cfg_gen.py')
         print("generate_efuse_bin ing...")
-        errcode = exec_shell([sys.executable, copy_py], None, True)
+        errcode = exec_shell([sys.executable, copy_py, target_name], None, True)
         if errcode != 0:
             print("generate_efuse_bin failed!")
             return False
-        shutil.copy(os.path.join(root_path, 'output/ws63/acore/ws63-liteos-app/efuse_cfg.bin'), os.path.join(root_path, 'output/ws63/acore/boot_bin'))
+        target_bin_path = os.path.join(root_path, 'output/ws63/acore/', target_name, 'efuse_cfg.bin')
+        shutil.copy(target_bin_path, os.path.join(root_path, 'output/ws63/acore/boot_bin'))
         print("generate_efuse_bin done!")
 
     if env.get('copy_files_to_interim'):
