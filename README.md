@@ -388,6 +388,16 @@ BearPi-Pico H3863提供了以下Demo供开发参考：
   <td width="170" x:str><a href="https://www.bearpi.cn/core_board/bearpi/pico/h3863/software/Wi-Fi%20UDP%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B5%8B%E8%AF%95.html">Wi-Fi UDP客户端</a></td> <td width="170" x:str><a href=""></a></td>
   <td width="170" x:str><a href=""></a></td>
   <td width="170" x:str><a href=""></a></td></tr>
+  <tr height="18" style='height:13.50pt;'>
+  <td width="140" align="center" rowspan="1" style='height:27.00pt' x:str>
+<strong>Matter</strong></td>
+  <td x:str><strong>Matter</strong></td>
+  <td width="170" x:str><a href="https://gitcode.com/HiSpark/fbb_ws63/blob/master/docs/zh-CN/software/Matter%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97/Matter%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97.md">Matter Device设备开发</a></td>
+  <td width="170" x:str><a href=""></a></td>
+  <td width="170" x:str><a href=""></a></td>
+  <td width="170" x:str><a href=""></a></td>
+  <td width="170" x:str><a href=""></a></td>
+  <td width="170" x:str><a href=""></a></td></tr>
  </tr>
  <tr>
 <![if supportMisalignedColumns]>
