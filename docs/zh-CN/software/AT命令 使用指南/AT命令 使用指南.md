@@ -107,7 +107,7 @@
 </td>
 <td class="cellrowborder" valign="top" width="27.71%" headers="mcps1.1.4.1.2 "><p id="p115121140665"><a name="p115121140665"></a><a name="p115121140665"></a>2024-07-01</p>
 </td>
-<td class="cellrowborder" valign="top" width="48.74%" headers="mcps1.1.4.1.3 "><a name="ul171911805710"></a><a name="ul171911805710"></a><ul id="ul171911805710"><li>新增“<a href="Repeater相关AT指令.md">Repeater相关AT指令</a>”小节内容。</li><li>新增 “<a href="AT+SCANPRSSID指定ssid前缀扫描.md">AT+SCANPRSSID指定ssid前缀扫描</a>”小节内容。</li><li>更新 “<a href="AT+PBC-PBC连接.md">AT+PBC PBC连接</a>”、“<a href="AT+PIN-PIN连接.md">AT+PIN PIN连接</a>”和“<a href="AT+PINSHOW-生成PIN码.md">AT+PINSHOW 生成PIN码</a>”小节内容。</li><li>新增 “<a href="AT+APSCAN-softap扫描.md">AT+APSCAN softap扫描</a>”小节内容。</li><li>更新 “<a href="测试调试相关AT指令描述.md">测试调试相关AT指令描述</a>”小节内容。</li><li>更新 “<a href="BLE-AT指令描述.md">BLE AT指令描述</a>”小节内容。</li><li>更新 “<a href="SLE-AT指令描述.md">SLE AT指令描述</a>”小节内容。</li><li>更新 “<a href="平台模块AT命令.md">平台模块AT命令</a>”小节内容。</li></ul>
+<td class=”cellrowborder” valign=”top” width=”48.74%” headers=”mcps1.1.4.1.3 “><a name=”ul171911805710”></a><a name=”ul171911805710”></a><ul id=”ul171911805710”><li>新增”<a href=”Repeater相关AT指令.md”>Repeater相关AT指令</a>”小节内容。</li><li>新增 “<a href=”AT+SCANPRSSID指定ssid前缀扫描.md”>AT+SCANPRSSID指定ssid前缀扫描</a>”小节内容。</li><li>更新 “<a href=”AT+PIN-PIN连接.md”>AT+PIN PIN连接</a>”和”<a href=”AT+PINSHOW-生成PIN码.md”>AT+PINSHOW 生成PIN码</a>”小节内容。</li><li>新增 “<a href=”AT+APSCAN-softap扫描.md”>AT+APSCAN softap扫描</a>”小节内容。</li><li>更新 “<a href=”测试调试相关AT指令描述.md”>测试调试相关AT指令描述</a>”小节内容。</li><li>更新 “<a href=”BLE-AT指令描述.md”>BLE AT指令描述</a>”小节内容。</li><li>更新 “<a href=”SLE-AT指令描述.md”>SLE AT指令描述</a>”小节内容。</li><li>更新 “<a href=”平台模块AT命令.md”>平台模块AT命令</a>”小节内容。</li></ul>
 </td>
 </tr>
 <tr id="row1163912119197"><td class="cellrowborder" valign="top" width="23.549999999999997%" headers="mcps1.1.4.1.1 "><p id="p1363913117195"><a name="p1363913117195"></a><a name="p1363913117195"></a>01</p>
@@ -1061,11 +1061,6 @@ AT指令类型如[表1](#_table838912210233)所示。
 <td class="cellrowborder" valign="top" width="68%" headers="mcps1.1.3.1.2 "><p id="p779mcpsimp"><a name="p779mcpsimp"></a><a name="p779mcpsimp"></a>查看STA状态。</p>
 </td>
 </tr>
-<tr id="row780mcpsimp"><td class="cellrowborder" valign="top" width="32%" headers="mcps1.1.3.1.1 "><p id="p782mcpsimp"><a name="p782mcpsimp"></a><a name="p782mcpsimp"></a>AT+PBC</p>
-</td>
-<td class="cellrowborder" valign="top" width="68%" headers="mcps1.1.3.1.2 "><p id="p784mcpsimp"><a name="p784mcpsimp"></a><a name="p784mcpsimp"></a>wps pbc连接。</p>
-</td>
-</tr>
 <tr id="row785mcpsimp"><td class="cellrowborder" valign="top" width="32%" headers="mcps1.1.3.1.1 "><p id="p787mcpsimp"><a name="p787mcpsimp"></a><a name="p787mcpsimp"></a>AT+PIN</p>
 </td>
 <td class="cellrowborder" valign="top" width="68%" headers="mcps1.1.3.1.2 "><p id="p789mcpsimp"><a name="p789mcpsimp"></a><a name="p789mcpsimp"></a>wps_pin连接。</p>
@@ -1523,38 +1518,6 @@ AT指令类型如[表1](#_table838912210233)所示。
 </tbody>
 </table>
 
-#### AT+PBC PBC连接<a name="ZH-CN_TOPIC_0000001712485536"></a>
-
-<a name="table1338mcpsimp"></a>
-<table><tbody><tr id="row1343mcpsimp"><th class="firstcol" valign="top" width="18%" id="mcps1.1.3.1.1"><p id="p1345mcpsimp"><a name="p1345mcpsimp"></a><a name="p1345mcpsimp"></a>格式</p>
-</th>
-<td class="cellrowborder" valign="top" width="82%" headers="mcps1.1.3.1.1 "><p id="p1347mcpsimp"><a name="p1347mcpsimp"></a><a name="p1347mcpsimp"></a>AT+PBC</p>
-</td>
-</tr>
-<tr id="row1348mcpsimp"><th class="firstcol" valign="top" width="18%" id="mcps1.1.3.2.1"><p id="p1350mcpsimp"><a name="p1350mcpsimp"></a><a name="p1350mcpsimp"></a>响应</p>
-</th>
-<td class="cellrowborder" valign="top" width="82%" headers="mcps1.1.3.2.1 "><a name="ul2488103861514"></a><a name="ul2488103861514"></a><ul id="ul2488103861514"><li>成功：OK</li><li>失败：ERROR</li></ul>
-</td>
-</tr>
-<tr id="row1355mcpsimp"><th class="firstcol" valign="top" width="18%" id="mcps1.1.3.3.1"><p id="p1357mcpsimp"><a name="p1357mcpsimp"></a><a name="p1357mcpsimp"></a>参数说明</p>
-</th>
-<td class="cellrowborder" valign="top" width="82%" headers="mcps1.1.3.3.1 "><p id="p1359mcpsimp"><a name="p1359mcpsimp"></a><a name="p1359mcpsimp"></a>-</p>
-</td>
-</tr>
-<tr id="row1360mcpsimp"><th class="firstcol" valign="top" width="18%" id="mcps1.1.3.4.1"><p id="p1362mcpsimp"><a name="p1362mcpsimp"></a><a name="p1362mcpsimp"></a>示例</p>
-</th>
-<td class="cellrowborder" valign="top" width="82%" headers="mcps1.1.3.4.1 "><p id="p1364mcpsimp"><a name="p1364mcpsimp"></a><a name="p1364mcpsimp"></a>AT+PBC</p>
-</td>
-</tr>
-<tr id="row1365mcpsimp"><th class="firstcol" valign="top" width="18%" id="mcps1.1.3.5.1"><p id="p1367mcpsimp"><a name="p1367mcpsimp"></a><a name="p1367mcpsimp"></a>注意</p>
-</th>
-<td class="cellrowborder" valign="top" width="82%" headers="mcps1.1.3.5.1 "><a name="ul1369mcpsimp"></a><a name="ul1369mcpsimp"></a><ul id="ul1369mcpsimp"><li>默认未使能。</li><li>此命令为非阻塞式命令。</li><li>命令返回OK表示PBC连接命令下发成功，连接结果通过+NOTICE上报，+NOTICE信息如下：<p id="p1372mcpsimp"><a name="p1372mcpsimp"></a><a name="p1372mcpsimp"></a>+NOTICE:CONNECTED，表示连接成功。</p>
-</li></ul>
-</td>
-</tr>
-</tbody>
-</table>
-
 #### AT+PIN PIN连接<a name="ZH-CN_TOPIC_0000001760284961"></a>
 
 <a name="table1375mcpsimp"></a>
@@ -1926,65 +1889,6 @@ AT指令类型如[表1](#_table838912210233)所示。
 <tr id="row1090mcpsimp"><th class="firstcol" valign="top" width="20.080000000000002%" id="mcps1.1.3.5.1"><p id="p1092mcpsimp"><a name="p1092mcpsimp"></a><a name="p1092mcpsimp"></a>注意</p>
 </th>
 <td class="cellrowborder" valign="top" width="79.92%" headers="mcps1.1.3.5.1 "><a name="ul1094mcpsimp"></a><a name="ul1094mcpsimp"></a><ul id="ul1094mcpsimp"><li>&lt;chn&gt;：不同区域取值范围有差异，中国为1～13。</li><li>执行扫描命令成功后才能查询到扫描结果。</li><li>&lt;ssid&gt;如果为非ASCll编码的字符，则按照原编码显示。例如：名称为“中国”的ssid，显示格式为：P"\xe4\xb8\xad\xe5\x9b\xbd"。</li><li>&lt;bssid&gt; 会遵循隐私要求，例如：2c:00:73:7e:**:**</li></ul>
-</td>
-</tr>
-</tbody>
-</table>
-
-## Repeater相关AT指令<a name="ZH-CN_TOPIC_0000001774521738"></a>
-
-
-
-### Repeater相关AT指令一览表<a name="ZH-CN_TOPIC_0000001821082005"></a>
-
-<a name="table1451mcpsimp"></a>
-<table><thead align="left"><tr id="row1456mcpsimp"><th class="cellrowborder" valign="top" width="32%" id="mcps1.1.3.1.1"><p id="p1458mcpsimp"><a name="p1458mcpsimp"></a><a name="p1458mcpsimp"></a>指令</p>
-</th>
-<th class="cellrowborder" valign="top" width="68%" id="mcps1.1.3.1.2"><p id="p1460mcpsimp"><a name="p1460mcpsimp"></a><a name="p1460mcpsimp"></a>描述</p>
-</th>
-</tr>
-</thead>
-<tbody><tr id="row1462mcpsimp"><td class="cellrowborder" valign="top" width="32%" headers="mcps1.1.3.1.1 "><p id="p1464mcpsimp"><a name="p1464mcpsimp"></a><a name="p1464mcpsimp"></a>AT+BRCTL</p>
-</td>
-<td class="cellrowborder" valign="top" width="68%" headers="mcps1.1.3.1.2 "><p id="p1466mcpsimp"><a name="p1466mcpsimp"></a><a name="p1466mcpsimp"></a>配置Repeater特性开关、网络接口以及相关信息显示。默认未使能。</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-### Repeater相关AT指令描述<a name="ZH-CN_TOPIC_0000001774362338"></a>
-
-<a name="table1657mcpsimp"></a>
-<table><tbody><tr id="row1662mcpsimp"><th class="firstcol" valign="top" width="18.240000000000002%" id="mcps1.1.3.1.1"><p id="p1664mcpsimp"><a name="p1664mcpsimp"></a><a name="p1664mcpsimp"></a>格式</p>
-</th>
-<td class="cellrowborder" valign="top" width="81.76%" headers="mcps1.1.3.1.1 "><p id="p1666mcpsimp"><a name="p1666mcpsimp"></a><a name="p1666mcpsimp"></a>AT+BRCTL=&lt;cmd&gt;[,&lt;ifname&gt;]</p>
-</td>
-</tr>
-<tr id="row1667mcpsimp"><th class="firstcol" valign="top" width="18.240000000000002%" id="mcps1.1.3.2.1"><p id="p1669mcpsimp"><a name="p1669mcpsimp"></a><a name="p1669mcpsimp"></a>响应</p>
-</th>
-<td class="cellrowborder" valign="top" width="81.76%" headers="mcps1.1.3.2.1 "><a name="ul2488103861514"></a><a name="ul2488103861514"></a><ul id="ul2488103861514"><li>成功：OK</li><li>失败：ERROR</li></ul>
-</td>
-</tr>
-<tr id="row1674mcpsimp"><th class="firstcol" valign="top" width="18.240000000000002%" id="mcps1.1.3.3.1"><p id="p1676mcpsimp"><a name="p1676mcpsimp"></a><a name="p1676mcpsimp"></a>参数说明</p>
-</th>
-<td class="cellrowborder" valign="top" width="81.76%" headers="mcps1.1.3.3.1 "><a name="ul123475558207"></a><a name="ul123475558207"></a><ul id="ul123475558207"><li>&lt;cmd&gt;：Repeater配置命令字。<p id="p1168191162318"><a name="p1168191162318"></a><a name="p1168191162318"></a>addbr：使能Repeater功能</p>
-<p id="p1490373042311"><a name="p1490373042311"></a><a name="p1490373042311"></a>delbr：去使能Repeater功能</p>
-<p id="p9169164015237"><a name="p9169164015237"></a><a name="p9169164015237"></a>addif：添加网络接口，与&lt;ifname&gt;参数配合使用</p>
-<p id="p1759075816238"><a name="p1759075816238"></a><a name="p1759075816238"></a>delif：删除网络接口，与&lt;ifname&gt;参数配合使用</p>
-<p id="p021410209249"><a name="p021410209249"></a><a name="p021410209249"></a>show：打印维测信息，包含Repeater特性是否使能以及网络接口</p>
-</li><li>&lt;ifname&gt;：网络接口名</li></ul>
-</td>
-</tr>
-<tr id="row1679mcpsimp"><th class="firstcol" valign="top" width="18.240000000000002%" id="mcps1.1.3.4.1"><p id="p1681mcpsimp"><a name="p1681mcpsimp"></a><a name="p1681mcpsimp"></a>示例</p>
-</th>
-<td class="cellrowborder" valign="top" width="81.76%" headers="mcps1.1.3.4.1 "><p id="p1683mcpsimp"><a name="p1683mcpsimp"></a><a name="p1683mcpsimp"></a>AT+BRCTL=addbr</p>
-<p id="p11760195832617"><a name="p11760195832617"></a><a name="p11760195832617"></a>AT+BRCTL=addif,wlan0</p>
-<p id="p3793914112710"><a name="p3793914112710"></a><a name="p3793914112710"></a>AT+BRCTL=show</p>
-</td>
-</tr>
-<tr id="row1684mcpsimp"><th class="firstcol" valign="top" width="18.240000000000002%" id="mcps1.1.3.5.1"><p id="p1686mcpsimp"><a name="p1686mcpsimp"></a><a name="p1686mcpsimp"></a>注意</p>
-</th>
-<td class="cellrowborder" valign="top" width="81.76%" headers="mcps1.1.3.5.1 "><a name="ul17234113815273"></a><a name="ul17234113815273"></a><ul id="ul17234113815273"><li>使用Repeater功能需保证Repeater特性使能以及STA、Softap网络接口均已添加</li><li>添加STA网络接口需保证已连接成功</li><li>Softap不需要启用dhcps服务器</li></ul>
 </td>
 </tr>
 </tbody>
@@ -2559,48 +2463,6 @@ AT指令类型如[表1](#_table838912210233)所示。
 </tr>
 </thead>
 <tbody><tr id="row2818mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2821mcpsimp"><a name="p2821mcpsimp"></a><a name="p2821mcpsimp"></a>AT+STOPSTA</p>
-</td>
-</tr>
-<tr id="row2822mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2824mcpsimp"><a name="p2824mcpsimp"></a><a name="p2824mcpsimp"></a>注意：-</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-### 启动/停止Repeater<a name="ZH-CN_TOPIC_0000001821085377"></a>
-
-<a name="table2792mcpsimp"></a>
-<table><thead align="left"><tr id="row2796mcpsimp"><th class="cellrowborder" valign="top" width="100%" id="mcps1.1.2.1.1"><p id="p2798mcpsimp"><a name="p2798mcpsimp"></a><a name="p2798mcpsimp"></a>启动Repeater示例</p>
-</th>
-</tr>
-</thead>
-<tbody><tr id="row2799mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2801mcpsimp"><a name="p2801mcpsimp"></a><a name="p2801mcpsimp"></a>AT+MAC=90:2B:D2:E4:CE:28</p>
-<p id="p2802mcpsimp"><a name="p2802mcpsimp"></a><a name="p2802mcpsimp"></a>AT+STARTSTA</p>
-<p id="p2803mcpsimp"><a name="p2803mcpsimp"></a><a name="p2803mcpsimp"></a>AT+SCAN</p>
-<p id="p2804mcpsimp"><a name="p2804mcpsimp"></a><a name="p2804mcpsimp"></a>AT+SCANRESULT</p>
-<p id="p2805mcpsimp"><a name="p2805mcpsimp"></a><a name="p2805mcpsimp"></a>AT+CONN="XXX",,"123456789"</p>
-<p id="p2806mcpsimp"><a name="p2806mcpsimp"></a><a name="p2806mcpsimp"></a>AT+STASTAT</p>
-<p id="p2771mcpsimp"><a name="p2771mcpsimp"></a><a name="p2771mcpsimp"></a>AT+STARTAP="XXX",6,2,"123456789"</p>
-<p id="p79660333352"><a name="p79660333352"></a><a name="p79660333352"></a>AT+BRCTL=addbr</p>
-<p id="p8310113915356"><a name="p8310113915356"></a><a name="p8310113915356"></a>AT+BRCTL=addif,wlan0</p>
-<p id="p119201950193520"><a name="p119201950193520"></a><a name="p119201950193520"></a>AT+BRCTL=addif,ap0</p>
-<p id="p203980213620"><a name="p203980213620"></a><a name="p203980213620"></a>AT+BRCTL=show</p>
-</td>
-</tr>
-<tr id="row2808mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2810mcpsimp"><a name="p2810mcpsimp"></a><a name="p2810mcpsimp"></a>注意：设置MAC地址命令可选，如果不设置则使用随机MAC；设置的MAC地址为STA的地址，SoftAP的地址为STA的地址+1。</p>
-</td>
-</tr>
-</tbody>
-</table>
-
-<a name="table2811mcpsimp"></a>
-<table><thead align="left"><tr id="row2815mcpsimp"><th class="cellrowborder" valign="top" width="100%" id="mcps1.1.2.1.1"><p id="p2817mcpsimp"><a name="p2817mcpsimp"></a><a name="p2817mcpsimp"></a>停止Repeater示例</p>
-</th>
-</tr>
-</thead>
-<tbody><tr id="row2818mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2821mcpsimp"><a name="p2821mcpsimp"></a><a name="p2821mcpsimp"></a>AT+BRCTL=delif,wlan0</p>
-<p id="p17833535153614"><a name="p17833535153614"></a><a name="p17833535153614"></a>AT+BRCTL=delif,ap0</p>
-<p id="p24400425369"><a name="p24400425369"></a><a name="p24400425369"></a>AT+BRCTL=delbr</p>
 </td>
 </tr>
 <tr id="row2822mcpsimp"><td class="cellrowborder" valign="top" width="100%" headers="mcps1.1.2.1.1 "><p id="p2824mcpsimp"><a name="p2824mcpsimp"></a><a name="p2824mcpsimp"></a>注意：-</p>
@@ -7031,7 +6893,7 @@ AT+SLESTOPSCAN
 </tr>
 <tr id="row75462022523"><th class="firstcol" valign="top" width="17.83%" id="mcps1.1.3.3.1"><p id="p19546102214219"><a name="p19546102214219"></a><a name="p19546102214219"></a>参数说明</p>
 </th>
-<td class="cellrowborder" valign="top" width="82.17%" headers="mcps1.1.3.3.1 "><p id="p1854642214217"><a name="p1854642214217"></a><a name="p1854642214217"></a>&lt;dly_time&gt;：雷达有目标到无目标状态退出时间：范围：1~43200，单位：s。</p>
+<td class="cellrowborder" valign="top" width="82.17%" headers="mcps1.1.3.3.1 "><p id="p1854642214217"><a name="p1854642214217"></a><a name="p1854642214217"></a>&lt;dly_time&gt;：雷达有目标到无目标状态退出时间：范围：8~43200，单位：s。</p>
 </td>
 </tr>
 <tr id="row8546122212217"><th class="firstcol" valign="top" width="17.83%" id="mcps1.1.3.4.1"><p id="p1954614221629"><a name="p1954614221629"></a><a name="p1954614221629"></a>示例</p>
