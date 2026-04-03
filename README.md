@@ -60,6 +60,7 @@
 | [KHD-3863B 星闪开发板（深开鸿）](https://mall.kaihong.com/productDetail?skuId=1839195267891466241&goodsId=1839195267383955458) | [KHD-3863B星闪开发板（开鸿商城）](https://mall.kaihong.com/productDetail?skuId=1839195267891466241&goodsId=1839195267383955458) | <img src="vendor/Kaihong_KHD-3863B/doc/media/KHD-3863B.png" alt="KHD-3863B" style="zoom: 75%;" /> |
 | FB36星闪开发板（利尔达）                                     | [利尔达FB36星闪开发板（淘宝）](https://item.taobao.com/item.htm?ft=t&id=1028608779508) | ![image-20250801141835783](./vendor/Lierda-FB36/image-20250801141835783.png) |
 | FB36星闪Wi-Fi6 AI开发板（利尔达）                            | [利尔达FB36星闪Wi-Fi6 AI开发板（淘宝）](https://e.tb.cn/h.hkUwR5OhAz12Ija?tk=latG4WfuOeAtG-#22>lD) | ![image-20250801142242182](./vendor/Lierda-FB36/image-20250801142237377.png) |
+| WCL-63X-DK01星闪开发板（问沧智能）                           | 暂不提供                                                     | <img src="vendor/Waveconn_WCL-63X-DK01/doc/media/WCL-63X-DK01开发板（正面） - 1.png" alt="WCL-63X-DK01开发板（正面） - 1" style="zoom:33%;" /> |
 
 开发板产品均由相应厂家自行销售，由其对产品质量负责，如侵犯他人知识产权的由其自行承担全部责任及赔偿。海思不提供任何保证及担保，亦不承担责任及赔偿。
 
@@ -77,8 +78,9 @@
 |        MYF-F63VA01开发板(明裕丰)        |         [MYF-F63VA01开发板指南](vendor/MYF_F63/doc)          |  [MYF-F63VA01开发板硬件原理图](vendor/MYF_F63/doc/hardware)  |
 |        KHD-3863B星闪开发板(深开鸿)        |         [KHD-3863B星闪开发板介绍](vendor/Kaihong_KHD-3863B/doc/README.md)          |  [KHD-3863B星闪开发板硬件原理图](vendor/Kaihong_KHD-3863B/doc/hardware/开鸿KHD-3863B星闪开发板.pdf)  |
 | FB36星闪开发板（利尔达） | [FB36星闪开发板介绍](https://alidocs.dingtalk.com/i/nodes/dxXB52LJqnGE6GN4cqenAP2M8qjMp697?utm_scene=team_space) | [FB36星闪开发板硬件原理图](https://alidocs.dingtalk.com/i/nodes/LeBq413JAwPRQPYLuyKB3DDZWDOnGvpb?utm_scene=team_space) |
+| WCL-63X-DK01星闪开发板（问沧智能） | [WCL-63X-DK01星闪开发板介绍](vendor/Waveconn_WCL-63X-DK01/doc/media) | [WCL-63X-DK01星闪开发板硬件原理图](vendor/Waveconn_WCL-63X-DK01/doc/hardware) |
 
-## 开发板示例
+## 开发板示例s
 
 HiHope_NearLink_DK3863E_V03提供了以下Demo供开发参考：
 
