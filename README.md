@@ -78,7 +78,7 @@
 |        MYF-F63VA01开发板(明裕丰)        |         [MYF-F63VA01开发板指南](vendor/MYF_F63/doc)          |  [MYF-F63VA01开发板硬件原理图](vendor/MYF_F63/doc/hardware)  |
 |        KHD-3863B星闪开发板(深开鸿)        |         [KHD-3863B星闪开发板介绍](vendor/Kaihong_KHD-3863B/doc/README.md)          |  [KHD-3863B星闪开发板硬件原理图](vendor/Kaihong_KHD-3863B/doc/hardware/开鸿KHD-3863B星闪开发板.pdf)  |
 | FB36星闪开发板（利尔达） | [FB36星闪开发板介绍](https://alidocs.dingtalk.com/i/nodes/dxXB52LJqnGE6GN4cqenAP2M8qjMp697?utm_scene=team_space) | [FB36星闪开发板硬件原理图](https://alidocs.dingtalk.com/i/nodes/LeBq413JAwPRQPYLuyKB3DDZWDOnGvpb?utm_scene=team_space) |
-| WCL-63X-DK01星闪开发板（问沧智能） | [WCL-63X-DK01星闪开发板介绍](vendor/Waveconn_WCL-63X-DK01/doc/media) | [WCL-63X-DK01星闪开发板硬件原理图](vendor/Waveconn_WCL-63X-DK01/doc/hardware) |
+| WCL-63X-DK01星闪开发板（问沧智能） | [WCL-63X-DK01星闪开发板介绍](vendor/Waveconn_WCL-63X-DK01/doc) | [WCL-63X-DK01星闪开发板硬件原理图](vendor/Waveconn_WCL-63X-DK01/doc/hardware) |
 
 ## 开发板示例s
 
