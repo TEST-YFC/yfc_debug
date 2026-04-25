@@ -230,7 +230,7 @@ static int QuickCfgGetWifiInfo(char *payload, unsigned int len)
         return -1;
     }
 
-    BATCH_CFG_PRINTF("[QuickCfgGetWifiInfo]ssid: %s, pwd: %s. ret=%d\n", result.ssid, result.pwd);
+    BATCH_CFG_PRINTF("[QuickCfgGetWifiInfo]ssid: %s. ret=%d\n", result.ssid);
     int ret = sprintf_s(payload, len, "{\"ssid\":\"%s\",\"pwd\":\"%s\"}", result.ssid, result.pwd);
     if (ret <= 0) {
         BATCH_CFG_PRINTF("[QuickCfgGetWifiInfo]sBATCH_CFG_PRINTF_s fail, ret=%d\n", ret);
