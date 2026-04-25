@@ -25,4 +25,23 @@ config SAMPLE_SUPPORT_MQTT
     help
         This option means support MQTT sample depends on sta sample.
 
+if SAMPLE_SUPPORT_MQTT
+
+    menu "MQTT Sample Configuration"
+
+    config MQTT_USERNAME
+        string "Set MQTT username"
+        default "admin"
+        help
+            Configure the MQTT username for authentication.
+
+    config MQTT_PASSWORD
+        string "Set MQTT password"
+        default "admin"
+        help
+            Configure the MQTT password for authentication.
+
+    endmenu
+endif
+
 endmenu

@@ -38,8 +38,8 @@ static const td_u8 g_mqtt_ca_crt[] = "\
 ";
 static const td_char g_mqtt_uri[] = ""; /* example:"ssl://192.168.80.50:8883" */
 static const td_char g_mqtt_topic[] = "\'topic\'";
-static const td_char g_mqtt_username[] = "admin";
-static const td_char g_mqtt_password[] = "admin";
+static const td_char g_mqtt_username[] = CONFIG_MQTT_USERNAME;
+static const td_char g_mqtt_password[] = CONFIG_MQTT_PASSWORD;
 static const td_char g_mqtt_publish_msg[] = "\'hello,world!\'";
 
 static cert_string g_mqtt_client_crt_store = {g_mqtt_client_crt, sizeof(g_mqtt_client_crt)};
