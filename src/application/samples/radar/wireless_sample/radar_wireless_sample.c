@@ -271,8 +271,8 @@ td_s32 example_get_match_network(wifi_sta_config_stru *expected_bss)
 {
     td_s32  ret;
     td_u32  num = 64; /* 64:扫描到的Wi-Fi网络数量 */
-    td_char expected_ssid[] = "my_softAP";
-    td_char key[] = "123456789"; /* 待连接的网络接入密码 */
+    td_char expected_ssid[] = CONFIG_WIFI_SSID;
+    td_char key[] = CONFIG_WIFI_PWD; /* 待连接的网络接入密码 */
     td_bool find_ap = TD_FALSE;
     td_u8   bss_index;
     /* 获取扫描结果 */
