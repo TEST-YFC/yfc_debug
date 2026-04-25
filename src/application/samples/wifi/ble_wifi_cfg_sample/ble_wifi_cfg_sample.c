@@ -159,7 +159,7 @@ td_s32 example_get_match_network(wifi_sta_config_stru *expected_bss)
     memcpy_s(expected_ssid, WIFI_CONFIG_INFO_SSID_LEN, g_data, WIFI_CONFIG_INFO_SSID_LEN);
     memcpy_s(key, WIFI_CONFIG_INFO_SSID_LEN, g_data + WIFI_CONFIG_INFO_SSID_LEN, WIFI_CONFIG_INFO_KEY_LEN);
 
-    PRINT("%s expected_ssid :%s, key:%s\r\n", BGLE_WIFI_CFG_LOG, expected_ssid, key);
+    PRINT("%s expected_ssid :%s\r\n", BGLE_WIFI_CFG_LOG, expected_ssid);
 
     /* 筛选扫描到的Wi-Fi网络，选择待连接的网络 */
     for (bss_index = 0; bss_index < num; bss_index++) {

@@ -26,9 +26,6 @@
 #include "gpio.h"
 #include "pinctrl.h"
 
-#define EXPECT_AP_SSID                      "my_softAP"
-#define EXPECT_AP_PWD                       "123456789"
-
 #define WIFI_IFNAME_MAX_SIZE                16
 #define WIFI_MAX_SSID_LEN                   33
 #define WIFI_SCAN_AP_NUM_LIMIT              64
@@ -101,8 +98,8 @@ static td_s32 example_get_match_network(wifi_sta_config_stru *expected_bss)
 {
     td_s32  ret;
     td_u32  num = 64; /* 64:扫描到的Wi-Fi网络数量 */
-    td_char expected_ssid[] = EXPECT_AP_SSID;
-    td_char pd[] = EXPECT_AP_PWD;
+    td_char expected_ssid[] = CONFIG_WIFI_SSID;
+    td_char pd[] = CONFIG_WIFI_PWD;
     td_bool find_ap = TD_FALSE;
     td_u8   bss_index;
     /* 获取扫描结果 */

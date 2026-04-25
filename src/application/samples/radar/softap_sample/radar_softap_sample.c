@@ -61,10 +61,10 @@
 td_s32 radar_start_softap(uint16_t ap_iso)
 {
     /* SoftAp接口的信息 */
-    td_char base_ssid[WIFI_MAX_SSID_LEN] = "my_softAP";
+    td_char base_ssid[WIFI_MAX_SSID_LEN] = CONFIG_WIFI_SSID;
     td_char ssid[WIFI_MAX_SSID_LEN] = {0};
     sprintf(ssid, "%s-%d", base_ssid, ap_iso);
-    td_char pre_shared_key[WIFI_MAX_KEY_LEN] = "123456789";
+    td_char pre_shared_key[WIFI_MAX_KEY_LEN] = CONFIG_WIFI_PWD;
     softap_config_stru hapd_conf = {0};
     softap_config_advance_stru config = {0};
     td_char ifname[WIFI_IFNAME_MAX_SIZE + 1] = "ap0"; /* 创建的SoftAp接口名 */
